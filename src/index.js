@@ -1,12 +1,42 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+/**
+ * Import react
+ */
+import React from "react";
+import { Provider } from "react-redux";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+/**
+ * import render to make sure attach react to root app
+ */
+import { render } from "react-dom";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+/**
+ * Import the main entry point for this application
+ */
+import App from "./App/App";
+
+/**
+ * get the inital state
+ */
+import store, { history } from "./store";
+
+/**
+ * Import browser router for our main app
+ */
+import { ConnectedRouter } from "react-router-redux";
+
+import { ThemeProvider } from "styled-components";
+import theme from "./theme";
+
+/**
+ * Render it to the dom element
+ */
+render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById("app-root")
+);
