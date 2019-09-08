@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import posed from 'react-pose'
+import styled from "styled-components";
+import posed from "react-pose";
 
 export default styled(posed.div({}))`
   background-color: white;
@@ -34,4 +34,4 @@ export default styled(posed.div({}))`
     grid-column: 1;
     grid-row: 1;
   }
-`
+`;

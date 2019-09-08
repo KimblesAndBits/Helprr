@@ -59,7 +59,7 @@ class Comments extends React.Component {
             textAlign: "center"
           }}
         >
-          <h1 className="comments-txt">Comments</h1>
+          <p className="comments-txt">Comments</p>
         </div>
       );
     }

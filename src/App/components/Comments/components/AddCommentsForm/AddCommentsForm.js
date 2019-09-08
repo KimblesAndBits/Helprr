@@ -64,7 +64,9 @@ class AddCommentsFormComponent extends React.Component {
         </FormControl>
 
         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="name-simple">Comment</InputLabel>
+          <InputLabel className="input-label-commt" htmlFor="name-simple">
+            Comment
+          </InputLabel>
           <Input
             value={this.state.comment}
             onChange={this.handleChange("comment")}
