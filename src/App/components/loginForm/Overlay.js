@@ -1,26 +1,26 @@
-import React from 'react'
+import React from "react";
 import StyledOverlay, {
   InnerLogin,
   InnerSignup,
   Button,
   ButtonInnerLogin,
   ButtonInnerSignup
-} from './styled/StyledOverlay'
-import { STATE_LOG_IN } from './useToggle'
+} from "./styled/StyledOverlay";
+import { STATE_LOG_IN } from "./useToggle";
 
 const WelcomeOverlay = () => (
   <InnerLogin className="inner">
-    <h1>Welcome Back!</h1>
+    <h1 className="form-header">Welcome Back!</h1>
     <p>To keep connected with us please login with your personal info</p>
   </InnerLogin>
-)
+);
 
 const NewOverlay = () => (
   <InnerSignup className="inner">
-    <h1>Hello, Friend!</h1>
+    <h1 className="form-header">Hello, Friend!</h1>
     <p>Enter your details below to start your journey with us</p>
   </InnerSignup>
-)
+);
 
 const Overlay = ({ toggleMode, mode }) => (
   <StyledOverlay className="overlay">
@@ -31,6 +31,6 @@ const Overlay = ({ toggleMode, mode }) => (
       <ButtonInnerSignup>Sign up</ButtonInnerSignup>
     </Button>
   </StyledOverlay>
-)
+);
 
-export default Overlay
+export default Overlay;

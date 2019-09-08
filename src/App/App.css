@@ -11,6 +11,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: #eee;
   font-size: 1.4rem;
   font-family: "Oswald", sans-serif;
 }
@@ -25,7 +26,7 @@ h3,
 h4,
 h5 {
   margin: 2rem;
-  color: #000000;
+  color: #000;
   letter-spacing: 0;
   line-height: 2rem;
   padding: 0;
@@ -33,61 +34,25 @@ h5 {
 }
 
 a {
-  color: #007bff;
+  color: #695958;
   text-decoration: none;
   background-color: transparent;
 }
 
+li a {
+  color: #695958;
+}
+
 a:hover {
-  color: #0056b3;
+  color: #f44336;
   text-decoration: underline;
 }
 
 /*
- <====== toolbar styles starts ======>
- */
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: inline;
-  color: #177e89;
-  text-align: center;
-  padding: 40px;
-}
-
-li a:hover {
-  color: #f44336;
-}
-
-.table {
-  display: table;
-  margin: 0 auto;
-}
-
-/*
- <====== toolbar styles ends ======>
+ <====== logo & subhead section ======>
  */
 
 .subheader {
-  font-size: 2.265rem;
-}
-
-.reduxstagram-app {
-  padding: 4rem;
-  margin-bottom: 2rem;
-}
-
-.comments-txt {
-  font-family: "Pacifico", cursive;
   font-size: 2.265rem;
 }
 
@@ -99,4 +64,49 @@ li a:hover {
 .logo-nav:hover {
   text-decoration: none;
   color: inherit;
+}
+
+/*
+ <====== navbar section ======>
+ */
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.flex-item {
+  width: 200px;
+  height: 150px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: #695958;
+  font-weight: bold;
+  font-size: 2.265rem;
+  text-align: center;
+}
+
+/*
+ <====== toolbar styles starts ======>
+ 
+*/
+
+.reduxstagram-app {
+  padding: 4rem;
+  margin-bottom: 2rem;
+}
+
+.comments-txt {
+  font-family: "Pacifico", cursive;
+  font-size: 2.265rem;
 }
