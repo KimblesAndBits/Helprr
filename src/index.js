@@ -1,4 +1,4 @@
-`// import react
+// import react
 import React from "react";
 import { Provider } from "react-redux";
 
@@ -16,7 +16,7 @@ import { ConnectedRouter } from "react-router-redux";
 
 // all theme imports for login/sign up page
 import { ThemeProvider } from "styled-components";
-import theme from "../theme";
+import theme from "./theme";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
