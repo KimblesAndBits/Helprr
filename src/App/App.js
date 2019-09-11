@@ -19,8 +19,8 @@ import * as actionCreators from "./actions/actionCreators";
 //get our fontawesome imports
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //import login form things
@@ -29,11 +29,12 @@ import FormLogin from "./components/loginForm";
 // import footer
 import Footer from "./components/Footer/Footer";
 
+import Post from "./components/Posting/Post";
+
 /*
 this Link to make image clickable
-import all things need to run the router
- */
-
+import all things need to run the router 
+*/
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 class AppComponent extends Component {
@@ -79,13 +80,17 @@ class AppComponent extends Component {
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faPen} size="lg" />
+                <Post />
               </li>
 
               <li className="flex-item">
                 <Link to={"/register"}>
                   <FontAwesomeIcon icon={faUser} size="lg" />
                 </Link>
+              </li>
+
+              <li className="flex-item">
+                <FontAwesomeIcon icon={faComments} size="lg" />
               </li>
             </ul>
           </Toolbar>
