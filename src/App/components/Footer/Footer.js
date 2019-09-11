@@ -1,4 +1,5 @@
 import React from "react";
+import "./Footer.css";
 
 export default () => (
   <div
@@ -10,10 +11,10 @@ export default () => (
       justifyContent: "center"
     }}
   >
-    @reg; Copyright 2019 {""}
-    <br />
-    <a href="https://github.com/KimblesAndBits/Project-3" target="blank">
-      Helprr
-    </a>
+    <footer>
+      {" "}
+      &copy; Copyright 2019{" "}
+      <a href="https://github.com/KimblesAndBits/Project-3">Helprr</a>
+    </footer>
   </div>
 );

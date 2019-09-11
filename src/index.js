@@ -1,4 +1,4 @@
-// import react
+`// import react
 import React from "react";
 import { Provider } from "react-redux";
 
