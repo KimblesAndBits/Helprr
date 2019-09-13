@@ -19,7 +19,7 @@ import * as actionCreators from "./actions/actionCreators";
 //get our fontawesome imports
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -29,7 +29,7 @@ import FormLogin from "./components/loginForm";
 // import footer
 import Footer from "./components/Footer/Footer";
 
-import Post from "./components/Posting/Post";
+import PostTutorial from "./components/Posting/Post";
 
 /*
 this Link to make image clickable
@@ -40,7 +40,7 @@ import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 class AppComponent extends Component {
   render() {
     return (
-      <div className="reduxstagram-app">
+      <div className="helprr-app">
         <Link to={"/"} className="logo-nav">
           <h1
             style={{
@@ -76,11 +76,11 @@ class AppComponent extends Component {
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faUpload} size="lg" />
+                <FontAwesomeIcon icon={faVideo} size="lg" />
               </li>
 
               <li className="flex-item">
-                <Post />
+                <PostTutorial />
               </li>
 
               <li className="flex-item">

@@ -18,18 +18,23 @@ const HeaderPost = {
   color: "#050117"
 };
 
-export default () => (
-  <div>
+const PostBtn = () => {
+  return (
     <div className="box">
       <a className="button-post" href="#popup1">
         <FontAwesomeIcon icon={faPen} size="lg" />
       </a>
     </div>
+  );
+};
+
+const PostForm = () => {
+  return (
     <div id="popup1" className="overlay-post">
       <div className="popup">
         <h1 style={HeaderPost}>Helprr</h1>
 
-        <p style={subHeaderPost}>Post Tutorial</p>
+        <p style={subHeaderPost}>Need help? Start here.</p>
 
         <a className="close" href="#">
           ×
@@ -38,40 +43,33 @@ export default () => (
           <form id="contact" action method="post">
             <fieldset>
               <input
-                placeholder="Name"
+                placeholder="Post Title"
                 type="text"
                 tabIndex={1}
                 required
                 autofocus
               />
             </fieldset>
-            <fieldset>
-              <input
-                placeholder="Email address"
-                type="email"
-                tabIndex={2}
-                required
-              />
-            </fieldset>
-            <fieldset>
-              <input
-                placeholder="Phone number"
-                type="tel"
-                tabIndex={3}
-                required
-              />
-            </fieldset>
-            <fieldset>
-              <input placeholder="Image" type="url" tabIndex={4} required />
-            </fieldset>
+
+            
             <fieldset>
               <textarea
-                placeholder="Type your posting here..."
+                placeholder="Title Description..."
                 tabIndex={5}
                 required
                 defaultValue={""}
               />
             </fieldset>
+            
+
+            <div className="fileUpload">
+              <fieldset action="upload.php" method="POST">
+                <input type="file" multiple />
+                <p>Drag image or click area (optional)</p>
+              </fieldset>
+            </div>
+
+            
             <fieldset>
               <button
                 name="submit"
@@ -86,5 +84,16 @@ export default () => (
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+const PostTutorial = () => {
+  return (
+    <div>
+      <PostBtn />
+      <PostForm />
+    </div>
+  );
+};
+
+export default PostTutorial;
