@@ -148,18 +148,22 @@ fieldset {
   outline: 0;
   border: 1px solid #999;
 }
+
 ::-webkit-input-placeholder {
   color: #695958;
   font-size: 0.865rem;
 }
+
 :-moz-placeholder {
   color: #695958;
   font-size: 0.865rem;
 }
+
 ::-moz-placeholder {
   color: #695958;
   font-size: 0.865rem;
 }
+
 :-ms-input-placeholder {
   color: #695958;
   font-size: 0.865rem;
@@ -174,6 +178,25 @@ div#popup1 {
   line-height: 0px;
   margin-top: -65px;
 }
+
+.fileUpload {
+  width: 100%;
+  border: 4px dashed #fff;
+  margin: 0 0 15px 7px;
+}
+
+.fileUpload p {
+  line-height: 40px;
+  padding-bottom: 40px;
+  font-size: 1.4rem;
+}
+
+.fileUpload input {
+  outline: none;
+  opacity: 0;
+    
+}
+
 
 @media only screen and (max-width: 420px) {
   .popup {
