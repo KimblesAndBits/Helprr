@@ -1,56 +1,46 @@
-/**
- * Import react and dep for this app
- */
+//import react and dep for this app
 import React, { Component } from "react";
 
-/**
- * Import needed pages tp show image grid
- */
+//import needed pages tp show image grid
 import * as Pages from "./scenes";
 
-/**
- * Import main css for this project
- */
+//import main css for this project
 import "./App.css";
 
-/**
- * Import material ui things
- */
+//import material ui things
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
 
-/**
- * Import redux things
- */
+//import redux things
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actionCreators from "./actions/actionCreators";
 
-// get our fontawesome imports
+//get our fontawesome imports
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-/**
-  Import login form things ===============
- */
-
+//import login form things
 import FormLogin from "./components/loginForm";
 
-// ========================
+// import footer
+import Footer from "./components/Footer/Footer";
 
-/**
- * This Link to make image clickable
- * Import all things need to run the router
- */
+import PostTutorial from "./components/Posting/Post";
+
+/*
+this Link to make image clickable
+import all things need to run the router 
+*/
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 class AppComponent extends Component {
   render() {
     return (
-      <div className="reduxstagram-app">
+      <div className="helprr-app">
         <Link to={"/"} className="logo-nav">
           <h1
             style={{
@@ -78,33 +68,31 @@ class AppComponent extends Component {
 
         <AppBar position="static" color="default">
           <Toolbar>
-            <div className="table">
-              <ul>
-                <li>
-                  <Link to={"/"}>
-                    <FontAwesomeIcon icon={faHome} size="lg" />
-                  </Link>
-                </li>
+            <ul className="flex-container">
+              <li className="flex-item">
+                <Link to={"/"}>
+                  <FontAwesomeIcon icon={faHome} size="lg" />
+                </Link>
+              </li>
 
-                <li>
-                  <Link to={"#"}>
-                    <FontAwesomeIcon icon={faUpload} size="lg" />
-                  </Link>
-                </li>
+              <li className="flex-item">
+                <FontAwesomeIcon icon={faVideo} size="lg" />
+              </li>
 
-                <li>
-                  <Link to={"#"}>
-                    <FontAwesomeIcon icon={faPen} size="lg" />
-                  </Link>
-                </li>
+              <li className="flex-item">
+                <PostTutorial />
+              </li>
 
-                <li>
-                  <Link to={"#"}>
-                    <FontAwesomeIcon icon={faUser} size="lg" />
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              <li className="flex-item">
+                <Link to={"/register"}>
+                  <FontAwesomeIcon icon={faUser} size="lg" />
+                </Link>
+              </li>
+
+              <li className="flex-item">
+                <FontAwesomeIcon icon={faComments} size="lg" />
+              </li>
+            </ul>
           </Toolbar>
         </AppBar>
 
@@ -137,9 +125,9 @@ class AppComponent extends Component {
             }}
           />
           <Route path="/register" exact component={FormLogin} />
-
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </div>
     );
   }

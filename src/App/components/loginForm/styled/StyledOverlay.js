@@ -1,11 +1,11 @@
-import styled from 'styled-components'
-import posed from 'react-pose'
+import styled from "styled-components";
+import posed from "react-pose";
 
-const DURATION = 400
+const DURATION = 400;
 export const transition = {
-  type: 'tween',
+  type: "tween",
   duration: DURATION
-}
+};
 
 export const InnerSignup = posed.div({
   signup: {
@@ -15,9 +15,9 @@ export const InnerSignup = posed.div({
   },
   login: {
     transition,
-    x: '-120%'
+    x: "-120%"
   }
-})
+});
 
 export const InnerLogin = posed.div({
   login: {
@@ -27,9 +27,9 @@ export const InnerLogin = posed.div({
   },
   signup: {
     transition,
-    x: '120%'
+    x: "120%"
   }
-})
+});
 
 export const ButtonInnerLogin = styled(
   posed.span({
@@ -45,7 +45,7 @@ export const ButtonInnerLogin = styled(
 )`
   grid-row: 1;
   grid-column: 1;
-`
+`;
 
 export const ButtonInnerSignup = styled(
   posed.span({
@@ -61,33 +61,33 @@ export const ButtonInnerSignup = styled(
 )`
   grid-row: 1;
   grid-column: 1;
-`
+`;
 
 export const Button = styled(
   posed.div({
     signup: {
-      paddingLeft: '2rem',
-      paddingRight: '2rem',
+      paddingLeft: "2rem",
+      paddingRight: "2rem",
       transition: ({ from, to }) => ({
         duration: DURATION,
-        type: 'keyframes',
-        values: [from, '5rem', to]
+        type: "keyframes",
+        values: [from, "5rem", to]
       })
     },
     login: {
-      paddingLeft: '2rem',
-      paddingRight: '2rem',
+      paddingLeft: "2rem",
+      paddingRight: "2rem",
       transition: ({ from, to }) => ({
         duration: DURATION,
-        type: 'keyframes',
-        values: [from, '5rem', to]
+        type: "keyframes",
+        values: [from, "5rem", to]
       })
     }
   })
 )`
   overflow: hidden !important;
   display: grid;
-`
+`;
 
 export default styled(
   posed.div({
@@ -96,7 +96,7 @@ export default styled(
       transition
     },
     login: {
-      x: '100%',
+      x: "100%",
       transition
     }
   })
@@ -118,4 +118,4 @@ export default styled(
     grid-row: 1;
     grid-column: 1;
   }
-`
+`;

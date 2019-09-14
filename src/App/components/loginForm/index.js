@@ -5,7 +5,7 @@ import FormSignup from "./FormSignup";
 import Overlay from "./Overlay";
 
 import Container from "./styled/Container";
-
+import "../loginForm/styled/Register.css";
 import useToggle, { STATE_LOG_IN } from "./useToggle";
 
 const Form = ({ initialState = STATE_LOG_IN }) => {
