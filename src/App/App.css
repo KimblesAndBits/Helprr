@@ -1,5 +1,5 @@
 /*
- <====== global styles starts ======>
+ //  <====== global styles starts ======>
  */
 
 @import url("https://fonts.googleapis.com/css?family=Oswald|Pacifico&display=swap");
@@ -26,7 +26,7 @@ h3,
 h4,
 h5 {
   margin: 2rem;
-  color: #000;
+  color: #050117;
   letter-spacing: 0;
   line-height: 2rem;
   padding: 0;
@@ -48,16 +48,21 @@ a:hover {
   text-decoration: underline;
 }
 
+svg.svg-inline--fa.fa-video.fa-w-18.fa-lg:hover {
+  color: #f44336;
+}
+
 /*
  <====== logo & subhead section ======>
  */
 
 .subheader {
   font-size: 2.265rem;
+  color: #050117;
 }
 
 .logo-nav {
-  color: inherit;
+  color: #050117;
   text-decoration: none;
 }
 
@@ -101,7 +106,7 @@ a:hover {
  
 */
 
-.reduxstagram-app {
+.helprr-app {
   padding: 4rem;
   margin-bottom: 2rem;
 }
@@ -109,4 +114,21 @@ a:hover {
 .comments-txt {
   font-family: "Pacifico", cursive;
   font-size: 2.265rem;
+  color: #050117;
+}
+
+.topright {
+  position: absolute;
+  top: -60px;
+  right: 30px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal-parent {
+  position: absolute;
+  float: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

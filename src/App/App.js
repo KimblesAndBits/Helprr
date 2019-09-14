@@ -19,9 +19,12 @@ import * as actionCreators from "./actions/actionCreators";
 //get our fontawesome imports
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// importing reusable modal
+import Modal from "./components/Modal/Modal";
 
 //import login form things
 import FormLogin from "./components/loginForm";
@@ -29,19 +32,29 @@ import FormLogin from "./components/loginForm";
 // import footer
 import Footer from "./components/Footer/Footer";
 
+// import posting modal
+import PostTutorial from "./components/Posting/Post";
+
+// importing streaming modal (will be incomplete)
+import Stream from "./components/Stream/Stream";
+
 /*
 this Link to make image clickable
-import all things need to run the router
- */
-
+import all things need to run the router 
+*/
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 
 import Chat from "./components/Chat/chat";
 class AppComponent extends Component {
+  state = {
+    isOpen: false
+  };
+
+
   render() {
     return (
-      <div className="reduxstagram-app">
+      <div className="helprr-app">
         <Link to={"/"} className="logo-nav">
           <h1
             style={{
@@ -77,17 +90,30 @@ class AppComponent extends Component {
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faUpload} size="lg" />
+                <button onClick={e => this.setState({ isOpen: true })}>
+                  <FontAwesomeIcon icon={faVideo} size="lg" />
+                </button>
+
+                <Modal
+                  isOpen={this.state.isOpen}
+                  onClose={e => this.setState({ isOpen: false })}
+                >
+                  <Stream />
+                </Modal>
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faPen} size="lg" />
+                <PostTutorial />
               </li>
 
               <li className="flex-item">
                 <Link to={"/register"}>
                   <FontAwesomeIcon icon={faUser} size="lg" />
                 </Link>
+              </li>
+
+              <li className="flex-item">
+                <FontAwesomeIcon icon={faComments} size="lg" />
               </li>
             </ul>
           </Toolbar>
