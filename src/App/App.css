@@ -48,6 +48,10 @@ a:hover {
   text-decoration: underline;
 }
 
+svg.svg-inline--fa.fa-video.fa-w-18.fa-lg:hover {
+  color: #f44336;
+}
+
 /*
  <====== logo & subhead section ======>
  */
