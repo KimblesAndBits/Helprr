@@ -37,6 +37,8 @@ import all things need to run the router
 */
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
+import { Chat } from 'react-chat-popup';
+
 class AppComponent extends Component {
   render() {
     return (
@@ -127,6 +129,7 @@ class AppComponent extends Component {
           <Route path="/register" exact component={FormLogin} />
           <Redirect from="*" to="/" />
         </Switch>
+        <Chat />
         <Footer />
       </div>
     );
