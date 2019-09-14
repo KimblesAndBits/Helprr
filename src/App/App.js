@@ -19,9 +19,12 @@ import * as actionCreators from "./actions/actionCreators";
 //get our fontawesome imports
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// importing reusable modal
+import Modal from "./components/Modal/Modal";
 
 //import login form things
 import FormLogin from "./components/loginForm";
@@ -29,7 +32,11 @@ import FormLogin from "./components/loginForm";
 // import footer
 import Footer from "./components/Footer/Footer";
 
+// import posting modal
 import PostTutorial from "./components/Posting/Post";
+
+// importing streaming modal (will be incomplete)
+import Stream from "./components/Stream/Stream";
 
 /*
 this Link to make image clickable
@@ -37,9 +44,14 @@ import all things need to run the router
 */
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
-import { Chat } from 'react-chat-popup';
 
+import Chat from "./components/Chat/chat";
 class AppComponent extends Component {
+  state = {
+    isOpen: false
+  };
+
+
   render() {
     return (
       <div className="helprr-app">
@@ -78,7 +90,16 @@ class AppComponent extends Component {
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faVideo} size="lg" />
+                <button onClick={e => this.setState({ isOpen: true })}>
+                  <FontAwesomeIcon icon={faVideo} size="lg" />
+                </button>
+
+                <Modal
+                  isOpen={this.state.isOpen}
+                  onClose={e => this.setState({ isOpen: false })}
+                >
+                  <Stream />
+                </Modal>
               </li>
 
               <li className="flex-item">
