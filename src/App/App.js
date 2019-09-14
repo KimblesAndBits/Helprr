@@ -44,8 +44,8 @@ import all things need to run the router
 */
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
-import { Chat } from 'react-chat-popup';
 
+import Chat from "./components/Chat/chat";
 class AppComponent extends Component {
   state = {
     isOpen: false
