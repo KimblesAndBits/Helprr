@@ -5,6 +5,10 @@ import SocialButton from "./styled/SocialButton";
 import BrandButton from "./styled/BrandButton";
 import SlidingForm from "./styled/SlidingForm";
 
+const divStyle = {
+  marginRight: "30px"
+};
+
 const FormSignup = () => (
   <SlidingForm signup>
     <div className="main-register">
@@ -21,11 +25,13 @@ const FormSignup = () => (
         </SocialButton>
       </div>
       <p>or register with your email</p>
-      <form>
-        <input placeholder="Name" type="text" />
-        <input placeholder="Email" type="text" />
-        <input placeholder="Password" type="password" />
-      </form>
+      <div style={divStyle}>
+        <form>
+          <input placeholder="Name" type="text" />
+          <input placeholder="Email" type="text" />
+          <input placeholder="Password" type="password" />
+        </form>
+      </div>
       <BrandButton className="form-header">Sign up</BrandButton>
     </div>
   </SlidingForm>

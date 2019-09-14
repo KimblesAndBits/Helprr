@@ -19,8 +19,8 @@ import * as actionCreators from "./actions/actionCreators";
 //get our fontawesome imports
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 //import login form things
@@ -29,11 +29,12 @@ import FormLogin from "./components/loginForm";
 // import footer
 import Footer from "./components/Footer/Footer";
 
+import PostTutorial from "./components/Posting/Post";
+
 /*
 this Link to make image clickable
-import all things need to run the router
- */
-
+import all things need to run the router 
+*/
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 import { Chat } from 'react-chat-popup';
@@ -41,7 +42,7 @@ import { Chat } from 'react-chat-popup';
 class AppComponent extends Component {
   render() {
     return (
-      <div className="reduxstagram-app">
+      <div className="helprr-app">
         <Link to={"/"} className="logo-nav">
           <h1
             style={{
@@ -77,17 +78,21 @@ class AppComponent extends Component {
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faUpload} size="lg" />
+                <FontAwesomeIcon icon={faVideo} size="lg" />
               </li>
 
               <li className="flex-item">
-                <FontAwesomeIcon icon={faPen} size="lg" />
+                <PostTutorial />
               </li>
 
               <li className="flex-item">
                 <Link to={"/register"}>
                   <FontAwesomeIcon icon={faUser} size="lg" />
                 </Link>
+              </li>
+
+              <li className="flex-item">
+                <FontAwesomeIcon icon={faComments} size="lg" />
               </li>
             </ul>
           </Toolbar>
