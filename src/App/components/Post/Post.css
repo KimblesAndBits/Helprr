@@ -12,8 +12,7 @@
   display: block;
 }
 .mpo-modal-close {
-  cursor: pointer;
-  font-size: 35px;
+  cursor: pointer; 
   font-weight: bold;
   line-height: 20px;
   padding: 10px;
@@ -49,7 +48,7 @@
 }
 .mpo-modal-body {
   position: absolute;
-  top: 135%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -143,7 +142,7 @@
 
 .mpo-modal-content {
   margin: -70px 15px 15px;
-  padding: 50px 0 0;
+  
   position: relative;
 }
 
@@ -168,4 +167,10 @@
 
 label {
   cursor: pointer;
+}
+
+.fileUpload{
+  width: 100%;
+    border: 4px dashed #fff;
+    margin: 0 0 15px 7px;
 }
