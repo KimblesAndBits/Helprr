@@ -169,8 +169,13 @@ label {
   cursor: pointer;
 }
 
-.fileUpload{
-  width: 100%;
+.fileUpload input {
+  outline: none;
+  opacity: 0;
+}
+
+.fileUpload {
+    width: 100%;
     border: 4px dashed #fff;
     margin: 0 0 15px 7px;
 }

@@ -9,7 +9,8 @@ const subHeaderPost = {
   fontSize: "1.4rem",
   lineHeight: "5px",
   paddingBottom: "70px",
-  paddingTop: "10px"
+  paddingTop: "10px",
+  color: "#695958"
 };
 
 const HeaderPost = {
@@ -50,13 +51,10 @@ const StreamForm = () => {
                 required
                 autofocus
               />
-            </fieldset>          
-           
+            </fieldset>              
 
-            <div className="video-field">
-                          
-                <FontAwesomeIcon icon={faPlay} size="lg" className="play-padding"/>
-              
+            <div className="video-field">                          
+                <FontAwesomeIcon icon={faPlay} size="lg" className="play-padding"/>              
             </div>
 
             <fieldset>

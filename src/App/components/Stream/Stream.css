@@ -190,12 +190,6 @@ div#popup1 {
   font-size: 1.4rem;
 }
 
-.fileUpload input {
-  outline: none;
-  opacity: 0;
-  background-color: black;
-}
-
 .video-field {
   background-color: rgba(0, 0, 0, 0.9);
   width: 100%;
@@ -205,6 +199,7 @@ div#popup1 {
 
 .play-padding {
   padding: 80px;
+  color:#695958;
 }
 
 @media only screen and (max-width: 420px) {
