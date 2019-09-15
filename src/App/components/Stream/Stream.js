@@ -2,6 +2,7 @@ import "./Stream.css";
 import React from "react";
 
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const subHeaderPost = {
@@ -34,7 +35,7 @@ const StreamForm = () => {
       <div className="popup">
         <h1 style={HeaderPost}>Helprr</h1>
 
-        <p style={subHeaderPost}>Post Tutorial</p>
+        <p style={subHeaderPost}>Start Your Livestream. Start Teaching!</p>
 
         <a className="close" href="#">
           ×
@@ -43,44 +44,30 @@ const StreamForm = () => {
           <form id="contact" action method="post">
             <fieldset>
               <input
-                placeholder="Name"
+                placeholder="Title"
                 type="text"
                 tabIndex={1}
                 required
                 autofocus
               />
-            </fieldset>
-            <fieldset>
-              <input
-                placeholder="Email address"
-                type="email"
-                tabIndex={2}
-                required
-              />
-            </fieldset>
-            <fieldset>
-              <input
-                placeholder="Phone number"
-                type="tel"
-                tabIndex={3}
-                required
-              />
-            </fieldset>
+            </fieldset>          
+           
 
-            <div className="fileUpload">
-              <fieldset action="upload.php" method="POST">
-                <input type="file" multiple />
-                <p>Drag your files here or click in this area.</p>
-              </fieldset>
+            <div className="video-field">
+                          
+                <FontAwesomeIcon icon={faPlay} size="lg" className="play-padding"/>
+              
             </div>
 
             <fieldset>
+            <div>
               <textarea
-                placeholder="Type your posting here..."
+                placeholder="Describe your livestream here..."
                 tabIndex={5}
                 required
                 defaultValue={""}
               />
+              </div>
             </fieldset>
             <fieldset>
               <button

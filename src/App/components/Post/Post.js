@@ -4,6 +4,7 @@ import React from "react";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const PostBtn = () => {
   return (
     <label htmlFor="mpo-modal-controller">
@@ -52,7 +53,7 @@ const PostForm = () => {
           <div className="mpo-modal-slide content-1">
             <div className="mpo-modal-content">
               <h1 className="posting-header">Helprr</h1>
-              <p className="posting-subhead">Give Help</p>
+              <p className="posting-subhead">Give Help. Start Here.</p>
               <div className="container-post">
                 <form id="contact" action method="post">
                   <fieldset>
@@ -105,7 +106,7 @@ const PostForm = () => {
           <div className="mpo-modal-slide content-2">
             <div className="mpo-modal-content">
               <h1 className="posting-header">Helprr</h1>
-              <p className="posting-subhead">Get Help</p>
+              <p className="posting-subhead">Get Help. Start Here.</p>
 
               <div className="container-post">
                 <form id="contact" action method="post">

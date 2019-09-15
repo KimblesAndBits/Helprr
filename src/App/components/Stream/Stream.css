@@ -180,9 +180,8 @@ div#popup1 {
 }
 
 .fileUpload {
-  width: 100%;
-  border: 4px dashed #fff;
-  margin: 0 0 15px 7px;
+  width: 100%;  
+  margin: 0 0 15px 1px;
 }
 
 .fileUpload p {
@@ -194,6 +193,18 @@ div#popup1 {
 .fileUpload input {
   outline: none;
   opacity: 0;
+  background-color: black;
+}
+
+.video-field {
+  background-color: rgba(0, 0, 0, 0.9);
+  width: 100%;
+  margin-bottom: 15px;
+  margin-left: 8px;
+}
+
+.play-padding {
+  padding: 80px;
 }
 
 @media only screen and (max-width: 420px) {
