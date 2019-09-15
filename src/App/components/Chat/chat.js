@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { Chat, addResponseMessage } from 'react-chat-popup';
 import "./Chat.css";
 
-
-const img = {
-  marginLeft: "-30px"
-};
-
-
 class App extends Component {
   componentDidMount() {    
     addResponseMessage("Welcome to Helprr!");

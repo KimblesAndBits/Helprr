@@ -179,3 +179,8 @@ label {
     border: 4px dashed #fff;
     margin: 0 0 15px 7px;
 }
+
+.upload-post {
+  font-size: 1.4rem;
+  color: #695958;
+}

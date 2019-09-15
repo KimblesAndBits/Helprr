@@ -2,6 +2,7 @@ import "./Post.css";
 import React from "react";
 
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -69,7 +70,9 @@ const PostForm = () => {
                   <div className="fileUpload">
                     <fieldset action="upload.php" method="POST">
                       <input type="file" multiple />
-                      <p>Drag video or image here or click in area.</p>
+                      <FontAwesomeIcon icon={faUpload} size="lg" />
+                      <p className="upload-post">Drag video or image here or click in area.</p>
+                      
                     </fieldset>
                   </div>
 
@@ -123,7 +126,8 @@ const PostForm = () => {
                   <div className="fileUpload">
                     <fieldset action="upload.php" method="POST">
                       <input type="file" multiple />
-                      <p>Drag images here or click in area.</p>
+                      <FontAwesomeIcon icon={faUpload} size="lg" />
+                      <p className="upload-post">Drag images here or click in area.</p>
                     </fieldset>
                   </div>
 
