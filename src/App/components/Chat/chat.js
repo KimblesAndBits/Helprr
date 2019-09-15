@@ -10,7 +10,7 @@ const img = {
 
 class App extends Component {
   componentDidMount() {    
-    addResponseMessage("Welcome to the Helprr App!");
+    addResponseMessage("Welcome to Helprr!");
   }
  
   handleNewUserMessage = (newMessage) => {

@@ -22,9 +22,6 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// importing reusable modal
-import Modal from "./components/Modal/Modal";
-
 //import login form things
 import FormLogin from "./components/loginForm";
 
@@ -32,10 +29,10 @@ import FormLogin from "./components/loginForm";
 import Footer from "./components/Footer/Footer";
 
 // import posting modal
-import PostTutorial from "./components/Posting/Post";
+import StreamModal from "./components/Stream/Stream";
 
 // importing streaming modal (will be incomplete)
-import Stream from "./components/Stream/Stream";
+import PostModal from "./components/Post/Post";
 
 /*
 this Link to make image clickable
@@ -46,11 +43,6 @@ import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 import Chat from "./components/Chat/chat";
 class AppComponent extends Component {
-  state = {
-    isOpen: false
-  };
-
-
   render() {
     return (
       <div className="helprr-app">
@@ -89,20 +81,11 @@ class AppComponent extends Component {
               </li>
 
               <li className="flex-item">
-                <button onClick={e => this.setState({ isOpen: true })}>
-                  <FontAwesomeIcon icon={faVideo} size="lg" />
-                </button>
-
-                <Modal
-                  isOpen={this.state.isOpen}
-                  onClose={e => this.setState({ isOpen: false })}
-                >
-                  <Stream />
-                </Modal>
+                <StreamModal />
               </li>
 
               <li className="flex-item">
-                <PostTutorial />
+                <PostModal />
               </li>
 
               <li className="flex-item">
