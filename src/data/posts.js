@@ -104,108 +104,79 @@ const posts = [
   },
   {
     code: "_ep9kiQcVy",
-    caption: "⛄️",
+    caption: "How to Wrap your Hands for Muay Thai, Boxing, or Kickboxing - Closed Palm Style",
     likes: 64,
     id: "1143535906423162226",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/g6nn0iZwenA"
   },
   {
     code: "_XpJcrwcSn",
-    caption: "6 page spread on flexbox in this months netmag!",
+    caption: "Learn the basics of Dungeons & Dragons in 7 minutes!",
     likes: 74,
     id: "1141561999742846119",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/wHBM9ARGdD8"
   },
   
   {
     code: "_HMejJQcY5",
-    caption: "Today I learned that a long pull espresso is called a 'lungo'",
+    caption: "Visual COIN TRICK - TUTORIAL",
     likes: 18,
     id: "1136932306813044281",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/gPN68YIq3rA"
   },
   {
     code: "_Fq2zmwcaz",
-    caption: "Awesome hand lettered gift from @eunibae and the HackerYou crew.",
+    caption: "Beginners Warm Smokey Eye Makeup",
     likes: 48,
     id: "1136502965197194931",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/IOi2Q7nHZmY" 
   },
   {
     code: "_A2r0aQcfD",
     caption:
-      "Some serious hardware meet JavaScript hacks going down this week at hackeryou. Excited for demo day!",
+      "Torn Face FX Makeup Tutorial",
     likes: 57,
     id: "1135147611821557699",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/ZvGhm3incwI" 
   },
   {
     code: "-1rhFawccs",
-    caption: "Some major audio upgrades coming to my next videos 😍",
+    caption: "Dropping my Overnight Oats Tutorial",
     likes: 39,
     id: "1132002270913873708",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/f2C3B0uJMqY" 
   },
   {
     code: "-pjx-gQcVi",
-    caption: "My baby and me. Thanks to @bearandsparrow for this one.",
+    caption: "Top 9 Amazing Cake Decorating Tutorial 😍 Most Satisfying Cake Decorating Video! New Cake Style",
     likes: 81,
     id: "1128590547628442978",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/3SqAunqR-D0" 
   },
   {
-    code: "-oTZ0zQcWt",
-    caption: "It's too early. Send coffee.",
+    code: "-1rhFawccs",
+    caption: "Blanco Brown - The Git Up (Tutorial)",
+    likes: 39,
+    id: "1132002270913873708",
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/76IAnVEwT5Q"
+  },
+  {
+    code: "-pjx-gQcVi",
+    caption: "How To Make Your Lips Look Bigger Naturally",
     likes: 81,
-    id: "1128237044221461933",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
-  },
-  
-  {
-    code: "-fasqlQceO",
-    caption:
-      "Kaitlin decorated the house for the Christmas. So gezellig! #casabos",
-    likes: 46,
-    id: "1125735850454402958",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
-  },
-  {
-    code: "-VBgtGQcSf",
-    caption: "Trying the new Hamilton Brewery beer. Big fan.",
-    likes: 27,
-    id: "1122810327591928991",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
-  },
-  { 
-    code: "-FpTyHQcau",
-    caption:
-      "I'm in Austin for a conference and doing some training. Enjoying some local brew with my baby.",
-    likes: 82,
-    id: "1118481761857291950",
-    display_src: `https://picsum.photos/400/400/?image=${Math.floor(
-      Math.random() * 85
-    )}`
+    id: "1128590547628442978",
+    media: "iframe",
+    display_src:"https://www.youtube.com/embed/POl6ELQSKEY" 
   }
+
 ];
 
 export default posts;
