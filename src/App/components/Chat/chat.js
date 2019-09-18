@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
+
 import PostTutorial from '../Posting/Post';
+import "./Chat.css";
 import { Chat, addResponseMessage, senderPlaceHolder, addResponseChoices } from 'react-chat-popup';
 
 var delayInMilliseconds = 2000; //2 second
 
 
-  //your code to be executed after 1 second
 
 class App extends Component {
-  componentDidMount() {
-    addResponseMessage("Welcome to the Helprr App!");
-    
+  componentDidMount() {    
+    addResponseMessage("Welcome to Helprr!");
+
   }
  
   handleNewUserMessage = (newMessage) => {
@@ -101,11 +102,17 @@ else{
  
   render() {
     return (
-      <div className="App">
+      
+      <div className="icon-background">
+        <div className="icon"> 
         <Chat
+
           handleNewUserMessage={this.handleNewUserMessage} 
+
+
         />
-      </div>
+        </div> 
+      </div>    
     );
   }
 }
