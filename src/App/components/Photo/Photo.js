@@ -35,6 +35,7 @@ class PhotoComponent extends React.Component {
       <Card className={classes.card}>
         <Link to={`/image-details/${post.id}`}>
           <CardMedia
+            component={post.media === "iframe" ? "iframe" : "img"}
             className={classes.media}
             image={post.display_src}
             title={post.caption}
