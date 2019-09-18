@@ -37,36 +37,33 @@ module.exports = function (sequelize, DataTypes) {
                     len: [1]
                 }
             },
-            token: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            chatID: {
-                type: DataTypes.STRING,
+            // token: {
+            //     type: DataTypes.STRING,
+            //     allowNull: false
+            // },
+            // chatID: {
+            //     type: DataTypes.STRING,
+            //     allowNull: false
+            // }
+        });
+
+    User.associate = function (models) {
+        User.hasMany(models.Post, {
+            foreignKey: {
+                name: "user_name",
                 allowNull: false
             }
         });
+    };
 
-        User.hasMany(Post, {
+    User.associate = function (models) {
+        User.hasMany(models.Like, {
             foreignKey: {
                 name: "uid",
                 allowNull: false
-              }
-            });
-
-        User.hasMany(Like, {
-            foreignKey: {
-                name: "uid",
-                allowNull: false
-              }
-            });
-
-        Post.hasMany(Comment, {
-            foreignKey: {
-                name: "post_id",
-                allowNull: false
-              }
-            });
+            }
+        });
+    };
 
     return User;
 };

@@ -21,5 +21,14 @@ module.exports = function (sequelize, DataTypes) {
 			}
 		});
 
+		Post.associate = function (models) {
+			Post.hasMany(models.Comment, {
+				foreignKey: {
+					name: "post_id",
+					allowNull: false
+				}
+			});
+		};
+
 	return Post;
 };
