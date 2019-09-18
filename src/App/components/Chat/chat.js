@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PostTutorial from '../Posting/Post';
+// import PostTutorial from '../Posting/Post';
 import "./Chat.css";
 import { Chat, addResponseMessage, senderPlaceHolder, addResponseChoices } from 'react-chat-popup';
 
@@ -63,7 +63,7 @@ class App extends Component {
           value: "No but I want to!",
         },
       ],
-    })
+    });
   }, delayInMilliseconds);
   }
 else{
@@ -89,15 +89,15 @@ if (newMessage === "Duh, take me where I need to go."){
 else{
 
 };
-if (newMessage === "My face was made for the camera"){
-  setTimeout(function() {
-  PostTutorial
-}, delayInMilliseconds);
-}
-else{
+// if (newMessage === "My face was made for the camera"){
+//   PostTutorial
+  
+// }, delayInMilliseconds);
+// }
+// else{
 
 
-};
+// };
   }
  
   render() {
