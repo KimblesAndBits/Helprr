@@ -213,7 +213,7 @@ const posts = [
       Math.random() * 85
     )}`
   },
-  {
+  { 
     code: "-FpTyHQcau",
     caption:
       "I'm in Austin for a conference and doing some training. Enjoying some local brew with my baby.",

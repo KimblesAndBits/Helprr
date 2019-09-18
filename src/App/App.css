@@ -52,6 +52,11 @@ svg.svg-inline--fa.fa-video.fa-w-18.fa-lg:hover {
   color: #f44336;
 }
 
+li.flex-item:hover {
+  color: #f44336;
+  cursor: pointer;
+}
+
 /*
  <====== logo & subhead section ======>
  */

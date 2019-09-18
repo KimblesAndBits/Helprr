@@ -1,59 +1,96 @@
-import React from "react";
 import "./Stream.css";
+import React from "react";
 
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Stream = () => {
+const subHeaderPost = {
+  fontSize: "1.4rem",
+  lineHeight: "5px",
+  paddingBottom: "70px",
+  paddingTop: "10px",
+  color: "#695958"
+};
+
+const HeaderPost = {
+  lineHeight: "0px",
+  marginTop: "60px",
+  paddingBottom: "15px",
+  color: "#050117"
+};
+
+const StreamBtn = () => {
   return (
-    <div>
-      <p className="subheader-stream">Live Stream</p>
-      <form id="contact" action method="post">
-        <fieldset>
-          <input
-            placeholder="Name"
-            type="text"
-            tabIndex={1}
-            required
-            autofocus
-          />
-        </fieldset>
-
-        <div className="fileUpload">
-          <fieldset action="upload.php" method="POST">
-            <input type="file" multiple />
-            <p>
-              <FontAwesomeIcon
-                icon={faUpload}
-                size="lg"
-                className="circle-icon"
-              />
-            </p>
-          </fieldset>
-        </div>
-
-        <fieldset>
-          <textarea
-            placeholder="Describe your live stream here..."
-            tabIndex={5}
-            required
-            defaultValue={""}
-          />
-        </fieldset>
-
-        <fieldset>
-          <button
-            name="submit"
-            type="submit"
-            id="contact-submit"
-            data-submit="...Sending"
-          >
-            Submit
-          </button>
-        </fieldset>
-      </form>
+    <div className="box">
+      <a className="button-post" href="#popup1">
+        <FontAwesomeIcon icon={faVideo} size="lg" />
+      </a>
     </div>
   );
 };
 
-export default Stream;
+const StreamForm = () => {
+  return (
+    <div id="popup1" className="overlay-post">
+      <div className="popup">
+        <h1 style={HeaderPost}>Helprr</h1>
+
+        <p style={subHeaderPost}>Start Your Livestream. Start Teaching!</p>
+
+        <a className="close" href="#">
+          ×
+        </a>
+        <div className="container">
+          <form id="contact" action method="post">
+            <fieldset>
+              <input
+                placeholder="Title"
+                type="text"
+                tabIndex={1}
+                required
+                autofocus
+              />
+            </fieldset>              
+
+            <div className="video-field">                          
+                <FontAwesomeIcon icon={faPlay} size="lg" className="play-padding"/>              
+            </div>
+
+            <fieldset>
+            <div>
+              <textarea
+                placeholder="Describe your livestream here..."
+                tabIndex={5}
+                required
+                defaultValue={""}
+              />
+              </div>
+            </fieldset>
+            <fieldset>
+              <button
+                name="submit"
+                type="submit"
+                id="contact-submit"
+                data-submit="...Sending"
+              >
+                Submit
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const StreamModal = () => {
+  return (
+    <div>
+      <StreamBtn />
+      <StreamForm />
+    </div>
+  );
+};
+
+export default StreamModal;
