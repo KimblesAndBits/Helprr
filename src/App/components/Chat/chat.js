@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import PostTutorial from '../Posting/Post';
 import { Chat, addResponseMessage, senderPlaceHolder, addResponseChoices } from 'react-chat-popup';
 
- 
+var delayInMilliseconds = 2000; //2 second
+
+
+  //your code to be executed after 1 second
+
 class App extends Component {
   componentDidMount() {
     addResponseMessage("Welcome to the Helprr App!");
@@ -14,6 +19,7 @@ class App extends Component {
     //addResponseMessage("How can we help you?");
     
     if (newMessage === "hi"){
+      setTimeout(function() {
       addResponseChoices({
         text: 'Are you looking to learn or help?',
         choices: [
@@ -27,6 +33,7 @@ class App extends Component {
           },
         ],
       })
+    }, delayInMilliseconds);
     }
   else{
     
@@ -34,12 +41,15 @@ class App extends Component {
   };
 
     if (newMessage === "I need help with something!"){
+      setTimeout(function() {
       addResponseMessage("Tell me what you're looking for")
+    }, delayInMilliseconds);
     }
   else{
     
   };
   if (newMessage === "I wanna help!"){
+    setTimeout(function() {
     addResponseChoices({
       text: 'Have you already created an account?',
       choices: [
@@ -53,11 +63,13 @@ class App extends Component {
         },
       ],
     })
+  }, delayInMilliseconds);
   }
 else{
   
 };
 if (newMessage === "Duh, take me where I need to go."){
+  setTimeout(function() {
   addResponseChoices({
     text: 'Do you want to upload a video or a blog post?',
     choices: [
@@ -71,8 +83,18 @@ if (newMessage === "Duh, take me where I need to go."){
       },
     ],
   })
+}, delayInMilliseconds);
 }
 else{
+
+};
+if (newMessage === "My face was made for the camera"){
+  setTimeout(function() {
+  PostTutorial
+}, delayInMilliseconds);
+}
+else{
+
 
 };
   }
