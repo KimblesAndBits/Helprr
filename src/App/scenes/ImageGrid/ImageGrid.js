@@ -12,10 +12,8 @@ import Grid from "material-ui/Grid";
 // import photo compoenent
 import components from "../../components";
 
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
+// import styles
+import "./ImageGrid.css";
 
 const Photo = components.Photo;
 
@@ -84,7 +82,8 @@ handleChange = event => {
           value={this.state.searchString}
           ref="search"
           onChange={this.handleChange}
-          placeholder="Search Here"
+          placeholder="Search Videos"
+          className="search-bar"
         />
 
 
