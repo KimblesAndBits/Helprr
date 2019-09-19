@@ -43,10 +43,10 @@ const posts = [
   {
     code: "BAhvZrRwcfu",
     caption:
-      "How to tie your tie",
+      "Please help with my HTML/JavaScript homework assignment.",
     likes: 30,
     id: "1162418651480049646",
-    display_src: "https://www.101knots.com/wp-content/uploads/2016/11/How-to-Tie-a-Simple-Small-Oriental-Tie-Knot-Instructions.jpg"
+    display_src: "https://bit.ly/2lTLdvr"
   },
 
   {
