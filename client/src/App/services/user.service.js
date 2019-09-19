@@ -1,12 +1,12 @@
 import config from 'config';
 import { authHeader } from '../../auth-header';
 
+const bcrypt = require(bcrypt);
+
 export const userService = {
     login,
     logout,
     register,
-    getAll,
-    getById,
     update,
     delete: _delete
 };
@@ -15,16 +15,22 @@ function login(username, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username })
     };
 
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    return fetch(`${config.apiUrl}/user/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
+            bcrypt.compare(password, user.password, (err, res) => {
+                if (err) throw err;
+                if (res === true) {
+                    localStorage.setItem('user', JSON.stringify(user));
 
-            return user;
+                    return user;
+                }
+                return ("Incorrect password.");
+            });
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
         });
 }
 
@@ -33,32 +39,21 @@ function logout() {
     localStorage.removeItem('user');
 }
 
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
-}
-
-function getById(id) {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
-}
-
 function register(user) {
+    bcrypt.genSalt(saltRounds, (err, salt) => {
+        if (err) throw err;
+        bcrypt.hash(myPlaintextPassword, salt, (err, hash) => {
+            if (err) throw err;
+            user.password = hash;
+        });
+    });
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/users/register`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/user/register`, requestOptions).then(handleResponse);
 }
 
 function update(user) {

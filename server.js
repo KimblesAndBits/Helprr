@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 // API routes
-app.get("/login", (req, res) => {
+app.get("/user/login", (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
   db.User.findOne({
@@ -26,7 +26,7 @@ app.get("/login", (req, res) => {
   });
 });
 
-app.get("/register", (req, res) => {
+app.get("/user/register", (req, res) => {
   let userInfo = req.body
   db.User.findOrCreate({
     where: {email: userInfo.email}, defaults: {userInfo}
