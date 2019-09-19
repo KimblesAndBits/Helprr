@@ -1,0 +1,41 @@
+.modalStyle {
+    line-height: 0;
+  }
+  
+  .modalCloseButtonStyles {
+    position: absolute;
+    padding: 0px 0 0 0;
+    color: #695958;
+    padding-right: -53px;
+    margin-left: 178px;
+    margin-top: 15px;
+  }
+  
+  .modalCloseButtonStyles:hover {
+    color: rgb(5, 1, 23);
+  }
+  
+  .modalBackgroundColor {
+    position: initial;
+    width: fit-content;
+    margin: 0 auto;
+    background: #fff;
+    padding: 75px 20px 20px 20px;
+  }
+  
+  .headerModal {
+    position: absolute;
+    left: 22.92%;
+    right: 23.07%;
+    top: 8.56%;
+    bottom: 76.62%;
+    line-height: 0;
+    color: rgb(5, 1, 23);
+    margin-top: 67px;
+    font-size: 3.665rem;
+  }
+  
+  .form-margin {
+    margin-top: 30px;
+  }
+  
