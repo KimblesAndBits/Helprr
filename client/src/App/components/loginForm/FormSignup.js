@@ -17,7 +17,7 @@ class FormSignup extends React.Component {
       user: {
         first_name: "",
         last_name: "",
-        username: "",
+        user_name: "",
         password: ""
       },
       submitted: false
@@ -43,7 +43,11 @@ class FormSignup extends React.Component {
 
     this.setState({ submitted: true });
     const { user } = this.state;
-    if (user.first_name && user.last_name && user.username && user.password && user.email) {
+    if (user.first_name
+      && user.last_name
+      && user.user_name
+      && user.password
+      && user.email) {
       console.log("Register function next.");
       this.props.register(user);
     }
@@ -72,7 +76,7 @@ class FormSignup extends React.Component {
               <input name="first_name" placeholder="First Name" type="text" onChange={this.handleChange} />
               <input name="last_name" placeholder="Last Name" type="text" onChange={this.handleChange} />
               <input name="email" placeholder="Email" type="text" onChange={this.handleChange} />
-              <input name="username" placeholder="Username" type="text" onChange={this.handleChange} />
+              <input name="user_name" placeholder="Username" type="text" onChange={this.handleChange} />
               <input name="password" placeholder="Password" type="password" onChange={this.handleChange} />
               <BrandButton type="submit" className="form-header">Sign up</BrandButton>
               {registering &&

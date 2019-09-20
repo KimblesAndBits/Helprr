@@ -9,19 +9,22 @@ export const userService = {
     delete: _delete
 };
 
-function login(username, password) {
+function login(email, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username })
+        body: JSON.stringify({ email })
     };
+    console.log("Made it this far");
 
-    return fetch(`/user/login`, requestOptions)
+    return fetch(`/api/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
+            console.log(user);
             bcrypt.compare(password, user.password, (err, res) => {
                 if (err) throw err;
-                if (res === true) {
+                console.log("Password match: " + res);
+                if (res) {
                     localStorage.setItem('user', JSON.stringify(user));
 
                     return user;
@@ -37,23 +40,22 @@ function logout() {
 }
 
 function register(user) {
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) throw err;
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) throw err;
-            user.password = hash;
-        });
-    });
+    let salt = bcrypt.genSaltSync(10);
+    user.password = bcrypt.hashSync(user.password, salt);
     user.chatID = Math.floor(Math.random() * 1000000000);
-    user.token = jwt.sign({ ...user }, 'thereisnospoon');
-    console.log("Made it to the actions!");
+    user.token = jwt.sign(user.user_name, 'thereisnospoon');
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
+    return fetch(`/api/register`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            localStorage.setItem('user', JSON.stringify(user));
 
-    return fetch(`/user/register`, requestOptions).then(handleResponse);
+            return user;
+        });
 }
 
 // function update(user) {

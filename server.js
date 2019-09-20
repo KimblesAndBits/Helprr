@@ -3,33 +3,39 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
+const Sequelize = require('sequelize');
+const bodyParser = require("body-parser");
+const Op = Sequelize.Op;
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 // API routes
-app.post("/user/login", (req, res) => {
-  let username = req.body.username;
+app.post("/api/login", (req, res) => {
+  let email = req.body.email;
   db.User.findOne({
-    where: { user_name: username }
+    where: { email: email }
   }).then((user, err) => {
     if (err) throw err;
-    res.json(user)
+    res.send(user);
   });
 });
 
-app.post("/user/register", (req, res) => {
+app.post("/api/register", (req, res) => {
   let userInfo = req.body
   db.User.findOrCreate({
-    where: { email: userInfo.email }, defaults: { ...userInfo }
+    where: {[Op.or]: [{ email: userInfo.email }, { user_name: userInfo.user_name}]}, defaults: { ...userInfo }
   }).spread((user, created) => {
     if (created) {
-      res.json(user);
+      res.send(user);
     } else {
-      res.json("That email already belongs to an account.");
+      res.send("That email or username is already in use.");
     }
   })
 });

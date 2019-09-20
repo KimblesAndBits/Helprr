@@ -11,7 +11,7 @@ class FormLogin extends React.Component {
     super(props);
 
     this.state = {
-      username: "",
+      email: "",
       password: "",
       submitted: false
     };
@@ -29,9 +29,9 @@ class FormLogin extends React.Component {
     event.preventDefault();
 
     this.setState({ submitted: true });
-    const { username, password } = this.state;
-    if (username && password) {
-      this.props.login(username, password);
+    const { email, password } = this.state;
+    if (email && password) {
+      this.props.login(email, password);
     }
   };
 

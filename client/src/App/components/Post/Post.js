@@ -56,14 +56,14 @@ const PostForm = () => {
               <h1 className="posting-header">Helprr</h1>
               <p className="posting-subhead">Give Help. Start Here.</p>
               <div className="container-post">
-                <form id="contact" action method="post">
+                <form id="contact" method="post">
                   <fieldset>
                     <input
                       placeholder="Title"
                       type="text"
                       tabIndex={1}
                       required
-                      autofocus
+                      autoFocus
                     />
                   </fieldset>
 
@@ -112,14 +112,14 @@ const PostForm = () => {
               <p className="posting-subhead">Get Help. Start Here.</p>
 
               <div className="container-post">
-                <form id="contact" action method="post">
+                <form id="contact" method="post">
                   <fieldset>
                     <input
                       placeholder="Title"
                       type="text"
                       tabIndex={1}
                       required
-                      autofocus
+                      autoFocus
                     />
                   </fieldset>
 
