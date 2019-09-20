@@ -1,36 +1,36 @@
-import config from 'config';
 import { authHeader } from '../../auth-header';
-
-const bcrypt = require(bcrypt);
+const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
 
 export const userService = {
     login,
     logout,
     register,
-    update,
     delete: _delete
 };
 
-function login(username, password) {
+function login(email, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username })
+        body: JSON.stringify({ email })
     };
+    console.log("Made it this far");
 
-    return fetch(`${config.apiUrl}/user/login`, requestOptions)
+    return fetch(`/api/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
+            console.log(user);
             bcrypt.compare(password, user.password, (err, res) => {
                 if (err) throw err;
-                if (res === true) {
+                console.log("Password match: " + res);
+                if (res) {
                     localStorage.setItem('user', JSON.stringify(user));
 
                     return user;
                 }
                 return ("Incorrect password.");
             });
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
         });
 }
 
@@ -40,31 +40,33 @@ function logout() {
 }
 
 function register(user) {
-    bcrypt.genSalt(saltRounds, (err, salt) => {
-        if (err) throw err;
-        bcrypt.hash(myPlaintextPassword, salt, (err, hash) => {
-            if (err) throw err;
-            user.password = hash;
-        });
-    });
+    let salt = bcrypt.genSaltSync(10);
+    user.password = bcrypt.hashSync(user.password, salt);
+    user.chatID = Math.floor(Math.random() * 1000000000);
+    user.token = jwt.sign(user.user_name, 'thereisnospoon');
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
+    return fetch(`/api/register`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            localStorage.setItem('user', JSON.stringify(user));
 
-    return fetch(`${config.apiUrl}/user/register`, requestOptions).then(handleResponse);
+            return user;
+        });
 }
 
-function update(user) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
+// function update(user) {
+//     const requestOptions = {
+//         method: 'PUT',
+//         headers: { ...authHeader(), 'Content-Type': 'application/json' },
+//         body: JSON.stringify(user)
+//     };
 
-    return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);;
-}
+//     return fetch(`/users/${user.id}`, requestOptions).then(handleResponse);;
+// }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
@@ -73,7 +75,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -83,7 +85,6 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
             }
 
             const error = (data && data.message) || response.statusText;

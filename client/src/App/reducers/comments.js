@@ -1,5 +1,3 @@
-import { darkBaseTheme } from "material-ui/styles";
-
 function postComments(state = [], action) {
   switch (action.type) {
     case "ADD_COMMENT":

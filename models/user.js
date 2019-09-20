@@ -37,14 +37,14 @@ module.exports = function (sequelize, DataTypes) {
                     len: [1]
                 }
             },
-            // token: {
-            //     type: DataTypes.STRING,
-            //     allowNull: false
-            // },
-            // chatID: {
-            //     type: DataTypes.STRING,
-            //     allowNull: false
-            // }
+            token: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            chatID: {
+                type: DataTypes.STRING,
+                allowNull: false
+            }
         });
 
     User.associate = function (models) {

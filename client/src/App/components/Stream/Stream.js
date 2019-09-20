@@ -38,18 +38,18 @@ const StreamForm = () => {
 
         <p style={subHeaderPost}>Start Your Livestream. Start Teaching!</p>
 
-        <a className="close" href="#">
+        <a className="close" href="/close">
           ×
         </a>
         <div className="container">
-          <form id="contact" action method="post">
+          <form id="contact" method="post">
             <fieldset>
               <input
                 placeholder="Title"
                 type="text"
                 tabIndex={1}
                 required
-                autofocus
+                autoFocus
               />
             </fieldset>              
 
