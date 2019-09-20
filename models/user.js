@@ -48,15 +48,6 @@ module.exports = function (sequelize, DataTypes) {
         });
 
     User.associate = function (models) {
-        User.hasMany(models.Post, {
-            foreignKey: {
-                name: "user_name",
-                allowNull: false
-            }
-        });
-    };
-
-    User.associate = function (models) {
         User.hasMany(models.Like, {
             foreignKey: {
                 name: "uid",
