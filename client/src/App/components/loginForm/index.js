@@ -1,7 +1,7 @@
 import React from "react";
 
-import FormLogin from "./FormLogin";
-import FormSignup from "./FormSignup";
+import {FormLogin} from "./FormLogin";
+import {FormSignup} from "./FormSignup";
 import Overlay from "./Overlay";
 
 import Container from "./styled/Container";

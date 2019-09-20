@@ -38,7 +38,7 @@ const StreamForm = () => {
 
         <p style={subHeaderPost}>Start Your Livestream. Start Teaching!</p>
 
-        <a className="close" href="#">
+        <a className="close" href="/close">
           ×
         </a>
         <div className="container">

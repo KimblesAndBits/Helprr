@@ -1,13 +1,11 @@
-import config from 'config';
 import { authHeader } from '../../auth-header';
-
-const bcrypt = require(bcrypt);
+const jwt = require('jsonwebtoken');
+const bcrypt = require("bcryptjs");
 
 export const userService = {
     login,
     logout,
     register,
-    update,
     delete: _delete
 };
 
@@ -18,7 +16,7 @@ function login(username, password) {
         body: JSON.stringify({ username })
     };
 
-    return fetch(`${config.apiUrl}/user/login`, requestOptions)
+    return fetch(`/user/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             bcrypt.compare(password, user.password, (err, res) => {
@@ -30,7 +28,6 @@ function login(username, password) {
                 }
                 return ("Incorrect password.");
             });
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
         });
 }
 
@@ -40,31 +37,34 @@ function logout() {
 }
 
 function register(user) {
-    bcrypt.genSalt(saltRounds, (err, salt) => {
+    bcrypt.genSalt(10, (err, salt) => {
         if (err) throw err;
-        bcrypt.hash(myPlaintextPassword, salt, (err, hash) => {
+        bcrypt.hash(user.password, salt, (err, hash) => {
             if (err) throw err;
             user.password = hash;
         });
     });
+    user.chatID = Math.floor(Math.random() * 1000000000);
+    user.token = jwt.sign({ ...user }, 'thereisnospoon');
+    console.log("Made it to the actions!");
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/user/register`, requestOptions).then(handleResponse);
+    return fetch(`/user/register`, requestOptions).then(handleResponse);
 }
 
-function update(user) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
+// function update(user) {
+//     const requestOptions = {
+//         method: 'PUT',
+//         headers: { ...authHeader(), 'Content-Type': 'application/json' },
+//         body: JSON.stringify(user)
+//     };
 
-    return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);;
-}
+//     return fetch(`/users/${user.id}`, requestOptions).then(handleResponse);;
+// }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
 function _delete(id) {
@@ -73,7 +73,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
@@ -83,7 +83,6 @@ function handleResponse(response) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
                 logout();
-                location.reload(true);
             }
 
             const error = (data && data.message) || response.statusText;
