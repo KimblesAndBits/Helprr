@@ -15,6 +15,10 @@ import components from "../../components";
 // import styles
 import "./ImageGrid.css";
 
+// importing font icons
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Photo = components.Photo;
 
 const styles = theme => ({
@@ -25,17 +29,14 @@ const styles = theme => ({
 });
 
 class ImageGridComponent extends React.Component {
-
   // constructor to set initial state to what's in props
-  constructor(props) {
-    
+  constructor(props) {    
     // required step: always call the parent class constructor
     super(props);
 
 /* set the state directly. use props if necessary.
 keep track of searchString (text input box), posts (original posts from props)
 and finally currentPosts (what is actually being displayed) */
-
 this.state = {
   searchString: "",
   posts: this.props.posts,
@@ -49,7 +50,6 @@ this.state = {
 call on this method each time user changes at least one character in text input box
 update currentPosts based on what user types using JavaScripts built-in filter and match methods
 */
-
 handleChange = event => {
   let currentPosts = this.state.currentPosts;
   let posts = this.state.posts;
@@ -76,15 +76,17 @@ handleChange = event => {
 // adding input text box with value attribute and attached an onChange event listener
       <div className={classes.root}>
       
-<input
-          
-          type="text"
-          value={this.state.searchString}
-          ref="search"
-          onChange={this.handleChange}
-          placeholder="Search Videos"
-          className="search-bar"
-        />
+      <div className="search-container">
+          <input
+            type="text"
+            id="search-bar"
+            placeholder="What can I help you with today?"
+            value={this.state.searchString}
+            ref="search"
+            onChange={this.handleChange}
+          />
+          <FontAwesomeIcon icon={faSearch} size="lg" className="search-icon" />
+        </div>
 
 
         <Grid container spacing={40}>

@@ -1,13 +1,9 @@
 import React from "react";
 
-/**
- * Import material-ui things
- */
+// import material-ui things
 import Paper from "material-ui/Paper";
 
-/**
- * Import photo compoenent
- */
+// import photo compoenent
 import components from "../../components";
 
 const Photo = components.Photo;
