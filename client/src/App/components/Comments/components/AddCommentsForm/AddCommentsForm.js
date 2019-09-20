@@ -16,7 +16,7 @@ const styles = theme => ({
   },
   formControl: {
     margin: theme.spacing.unit,
-    width: "47%"
+    width: "98%"
   }
 });
 
@@ -24,9 +24,8 @@ class AddCommentsFormComponent extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { postCode } = this.props;
-    const author = this.state.author;
     const comment = this.state.comment;
-    this.props.onFormSubmit(postCode, author, comment);
+    this.props.onFormSubmit(postCode, comment);
     this.setState({
       author: "",
       comment: ""
@@ -54,15 +53,6 @@ class AddCommentsFormComponent extends React.Component {
           widht: "100%"
         }}
       >
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="author">Author</InputLabel>
-          <Input
-            value={this.state.author}
-            onChange={this.handleChange("author")}
-            placeholder="author"
-          />
-        </FormControl>
-
         <FormControl className={classes.formControl}>
           <InputLabel className="input-label-commt" htmlFor="name-simple">
             Comment

@@ -42,6 +42,22 @@ import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 import Chat from "./components/Chat/chat";
 class AppComponent extends Component {
+  constructor(props) {
+    super(props);
+    let user = JSON.parse(localStorage.getItem('helprrUser'));
+    this.state = {
+      user: { ...user }
+    }
+  }
+
+  componentDidMount() {
+    let user = JSON.parse(localStorage.getItem('helprrUser'));
+    console.log(user);
+    this.setState(
+      { user: { ...user } }
+    );
+  }
+
   render() {
     return (
       <div className="helprr-app">
@@ -54,6 +70,20 @@ class AppComponent extends Component {
             Helprr
           </h1>
         </Link>
+
+        {
+          (this.state.user) ?
+            (<p
+              className="subheader"
+              style={{
+                textAlign: "center"
+              }}
+            >
+              Welcome {this.state.user.first_name}!
+            </p>)
+            :
+            (<span></span>)
+        }
 
         <p
           className="subheader"

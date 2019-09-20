@@ -25,7 +25,7 @@ function login(email, password) {
                 if (err) throw err;
                 console.log("Password match: " + res);
                 if (res) {
-                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('helprrUser', JSON.stringify(user));
 
                     return user;
                 }
@@ -36,7 +36,7 @@ function login(email, password) {
 
 function logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('user');
+    localStorage.removeItem('helprrUser');
 }
 
 function register(user) {
@@ -52,7 +52,7 @@ function register(user) {
     return fetch(`/api/register`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('helprrUser', JSON.stringify(user));
 
             return user;
         });

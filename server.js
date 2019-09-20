@@ -3,9 +3,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require("./models");
-const Sequelize = require('sequelize');
 const bodyParser = require("body-parser");
-const Op = Sequelize.Op;
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -15,33 +13,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-// API routes
-app.post("/api/login", (req, res) => {
-  let email = req.body.email;
-  db.User.findOne({
-    where: { email: email }
-  }).then((user, err) => {
-    if (err) throw err;
-    res.send(user);
-  });
-});
-
-app.post("/api/register", (req, res) => {
-  let userInfo = req.body
-  db.User.findOrCreate({
-    where: {[Op.or]: [{ email: userInfo.email }, { user_name: userInfo.user_name}]}, defaults: { ...userInfo }
-  }).spread((user, created) => {
-    if (created) {
-      res.send(user);
-    } else {
-      res.send("That email or username is already in use.");
-    }
-  })
-});
-
-// End of API routes
-
+require("./apiRoutes.js")(app);
 
 let syncOptions = { force: false };
 

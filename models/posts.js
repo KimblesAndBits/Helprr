@@ -25,6 +25,11 @@ module.exports = function (sequelize, DataTypes) {
 				validate: {
 					len: [1]
 				}
+			},
+			likes : {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				default: 0
 			}
 		});
 
