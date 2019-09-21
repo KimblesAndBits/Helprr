@@ -37,24 +37,15 @@ module.exports = function (sequelize, DataTypes) {
                     len: [1]
                 }
             },
-            // token: {
-            //     type: DataTypes.STRING,
-            //     allowNull: false
-            // },
-            // chatID: {
-            //     type: DataTypes.STRING,
-            //     allowNull: false
-            // }
-        });
-
-    User.associate = function (models) {
-        User.hasMany(models.Post, {
-            foreignKey: {
-                name: "user_name",
+            token: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            chatID: {
+                type: DataTypes.STRING,
                 allowNull: false
             }
         });
-    };
 
     User.associate = function (models) {
         User.hasMany(models.Like, {

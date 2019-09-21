@@ -6,7 +6,6 @@ import StyledOverlay, {
   ButtonInnerLogin,
   ButtonInnerSignup
 } from "./styled/StyledOverlay";
-import { STATE_LOG_IN } from "./useToggle";
 
 const WelcomeOverlay = () => (
   <InnerLogin className="inner">

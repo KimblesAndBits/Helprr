@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // import PostTutorial from '../Posting/Post';
 import "./Chat.css";
-import { Chat, addResponseMessage, senderPlaceHolder, addResponseChoices } from 'react-chat-popup';
+import { Chat, addResponseMessage, addResponseChoices } from 'react-chat-popup';
 
 var delayInMilliseconds = 2000; //2 second
 
