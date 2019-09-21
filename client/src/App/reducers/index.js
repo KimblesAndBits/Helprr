@@ -6,11 +6,9 @@ import { users } from './users.reducer';
 import { alert } from './alert.reducer';
 
 import posts from "./posts";
-import comments from "./comments";
 
 const rootReducer = combineReducers({
   posts,
-  comments,
   authentication,
   registration,
   users,

@@ -4,7 +4,6 @@ import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import createHistory from "history/createBrowserHistory";
 import rootReducer from "./App/reducers";
-import data from "./data";
 
 export const history = createHistory();
 const loggerMiddleware = createLogger();
@@ -12,10 +11,7 @@ const loggerMiddleware = createLogger();
 /**
  * Create the inital value for your store
  */
-const initialState = {
-  posts: data.posts,
-  comments: data.comments
-};
+const initialState = {};
 
 const enhancers = [];
 const middleware = [routerMiddleware(history), thunkMiddleware, loggerMiddleware];

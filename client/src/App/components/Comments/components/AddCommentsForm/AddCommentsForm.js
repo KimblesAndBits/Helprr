@@ -1,13 +1,9 @@
 import React from "react";
-
+import { addComment } from "../../../../actions/actionCreators";
 import Input, { InputLabel } from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
 import { withStyles } from "material-ui/styles";
-
-/**
- * import prop types to make sure component give its pops right
- */
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 const styles = theme => ({
   container: {
@@ -16,27 +12,37 @@ const styles = theme => ({
   },
   formControl: {
     margin: theme.spacing.unit,
-    width: "47%"
+    width: "98%"
   }
 });
 
 class AddCommentsFormComponent extends React.Component {
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     const { postCode } = this.props;
-    const author = this.state.author;
-    const comment = this.state.comment;
-    this.props.onFormSubmit(postCode, author, comment);
+    const message = {
+      message: this.state.message,
+      author: this.state.author,
+      post_id: postCode.toString()
+    }
+    console.log(message);
+    this.props.create(message);
     this.setState({
       author: "",
-      comment: ""
+      message: ""
     });
   }
 
   state = {
     author: "",
-    comment: ""
+    message: ""
   };
+
+  componentDidMount() {
+    let user = JSON.parse(localStorage.getItem('helprrUser'));
+    this.setState({ author: user.user_name });
+    console.log(this.props);
+  }
 
   handleChange = field => event => {
     this.setState({ [field]: event.target.value });
@@ -50,40 +56,40 @@ class AddCommentsFormComponent extends React.Component {
         ref="commentForm"
         className={classes.container}
         onSubmit={this.handleSubmit.bind(this)}
-        style={{
-          widht: "100%"
-        }}
       >
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="author">Author</InputLabel>
-          <Input
-            value={this.state.author}
-            onChange={this.handleChange("author")}
-            placeholder="author"
-          />
-        </FormControl>
-
-        <FormControl className={classes.formControl}>
+        <FormControl
+          className={classes.formControl}
+          style={{
+            width: "85%",
+            float: "left"
+          }}>
           <InputLabel className="input-label-commt" htmlFor="name-simple">
             Comment
           </InputLabel>
           <Input
-            value={this.state.comment}
-            onChange={this.handleChange("comment")}
+            value={this.state.message}
+            onChange={this.handleChange("message")}
             placeholder="comment"
           />
         </FormControl>
 
-        <input type="submit" hidden />
+        <button style={{ float: "right" }} type="submit" >Submit</button>
       </form>
     );
   }
 }
 
-AddCommentsFormComponent.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+function mapState(state) {
+  const { comments } = state;
+  return { comments };
+}
 
-const AddCommentsForm = withStyles(styles)(AddCommentsFormComponent);
+const actionCreators = {
+  create: addComment
+}
+
+const ConnectedAddCommentsForm = connect(mapState, actionCreators)(AddCommentsFormComponent);
+
+const AddCommentsForm = withStyles(styles)(ConnectedAddCommentsForm);
 
 export default AddCommentsForm;

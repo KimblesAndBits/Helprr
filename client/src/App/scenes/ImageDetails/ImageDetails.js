@@ -11,24 +11,17 @@ const Comments = components.Comments;
 
 class ImageDetails extends React.Component {
   render() {
-    const postId = this.props.postId;
+    const postId = parseInt(this.props.postId, 10);
     const post = this.props.posts.find(post => post.id === postId);
-    const postComments = this.props.comments[post.code];
-    const index = this.props.posts.indexOf(post);
-
-    post.index = index;
-
-    console.log(this.props);
 
     return (
       <Paper>
-        <Photo post={post} onLikeClicked={this.props.increment} />
+        <Photo post={post} />
         <Comments
-          comments={postComments}
-          postCode={post.code}
+          postCode={post.id}
           postId={post.id}
-          onRemoveComments={this.props.removeComment}
-          onAddComments={this.props.addComment}
+          comments={post.Comments}
+          removeComment={this.props.removeComment}
         />
       </Paper>
     );

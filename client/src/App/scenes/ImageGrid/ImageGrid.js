@@ -2,9 +2,6 @@
 if its imported from multiple places  */
 import React from "react";
 
-// import prop types to make sure component give its pops right
-import PropTypes from "prop-types";
-
 //import material-ui things
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
@@ -30,53 +27,79 @@ const styles = theme => ({
 
 class ImageGridComponent extends React.Component {
   // constructor to set initial state to what's in props
-  constructor(props) {    
+  constructor(props) {
     // required step: always call the parent class constructor
     super(props);
 
-/* set the state directly. use props if necessary.
-keep track of searchString (text input box), posts (original posts from props)
-and finally currentPosts (what is actually being displayed) */
-this.state = {
-  searchString: "",
-  posts: this.props.posts,
-  classes: this.props.classes,
-  increment: this.props.increment,
-  currentPosts: this.props.posts
-  };
-}
-
-/* 
-call on this method each time user changes at least one character in text input box
-update currentPosts based on what user types using JavaScripts built-in filter and match methods
-*/
-handleChange = event => {
-  let currentPosts = this.state.currentPosts;
-  let posts = this.state.posts;
-  let search = this.refs.search.value;
- 
-  if (search.length > 0) {
-    currentPosts = posts.filter(function(post) {
-      return post.caption.toLowerCase().match(search);
-    });
+    /* set the state directly. use props if necessary.
+    keep track of searchString (text input box), posts (original posts from props)
+    and finally currentPosts (what is actually being displayed) */
+    this.state = {
+      searchString: "",
+      posts: this.props.posts,
+      classes: this.props.classes,
+      currentPosts: this.props.posts
+    };
   }
-  this.setState({
-    currentPosts,
-    searchString: search
-  });
-};
+
+  /* 
+  call on this method each time user changes at least one character in text input box
+  update currentPosts based on what user types using JavaScripts built-in filter and match methods
+  */
+  handleChange = event => {
+    let currentPosts = this.state.currentPosts;
+    let posts = this.state.posts;
+    let search = this.refs.search.value;
+
+    if (search.length > 0) {
+      currentPosts = posts.filter(function (post) {
+        return post.caption.toLowerCase().match(search);
+      });
+    }
+    this.setState({
+      currentPosts,
+      searchString: search
+    });
+  };
+
+  handleResponse(response) {
+    return response.text().then(text => {
+      const data = text && JSON.parse(text);
+      if (!response.ok) {
+        const error = (data && data.message) || response.statusText;
+        return Promise.reject(error);
+      }
+
+      return data;
+    });
+  };
+
+  componentWillMount() {
+    if (!this.state.posts.length) {
+      fetch("/api/post/find10", { method: "GET" })
+        .then(this.handleResponse)
+        .then(data => {
+          this.setState(
+            {
+              posts: [...data],
+              currentPosts: [...data]
+            }
+          );
+        })
+    }
+  };
 
   render() {
- // changing this from being set using props to setting it using state
- let posts = this.state.currentPosts;
- let classes = this.state.classes;
- let increment = this.state.increment;   
+    console.log(this.state.currentPosts)
+    // changing this from being set using props to setting it using state
+    let posts = this.state.currentPosts;
+    let classes = this.state.classes;
 
     return (
-// adding input text box with value attribute and attached an onChange event listener
+      // adding input text box with value attribute and attached an onChange event listener
       <div className={classes.root}>
-     
-     <div className="search-container">
+
+        <div className="search-container">
           <input
             type="text"
             id="search-bar"
@@ -89,14 +112,11 @@ handleChange = event => {
         </div>
 
         <Grid container spacing={40}>
-          {posts.map((post, index) => (
+          {posts.map((post) => (
             <Grid item xs={12} sm={6} lg={4} key={post.id}>
               <Photo
-                post={{
-                  ...post,
-                  index
-                }}
-                onLikeClicked={increment}
+                post={{ ...post }}
+                key={post.id}
               />
             </Grid>
           ))}
@@ -111,9 +131,6 @@ handleChange = event => {
   }
 }
 
-ImageGridComponent.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 const ImageGrid = withStyles(styles)(ImageGridComponent);
 

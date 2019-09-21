@@ -15,9 +15,13 @@ module.exports = function (sequelize, DataTypes) {
 					len: [1]
 				}
 			},
-			video: {
-				type: DataTypes.STRING,
+			image_video: {
+				type: DataTypes.STRING(1024),
 				allowNull: true
+			},
+			video: {
+				type: DataTypes.BOOLEAN,
+				allowNull: false
 			},
 			author: {
 				type: DataTypes.STRING,
@@ -25,6 +29,11 @@ module.exports = function (sequelize, DataTypes) {
 				validate: {
 					len: [1]
 				}
+			},
+			likes : {
+				type: DataTypes.INTEGER,
+				allowNull: false,
+				default: 0
 			}
 		});
 

@@ -40,14 +40,14 @@ const PostForm = () => {
           ×
         </a>
         <div className="container">
-          <form id="contact" action method="post">
+          <form id="contact" method="post">
             <fieldset>
               <input
                 placeholder="Post Title"
                 type="text"
                 tabIndex={1}
                 required
-                autofocus
+                autoFocus
               />
             </fieldset>
 
