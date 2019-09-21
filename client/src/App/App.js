@@ -64,7 +64,7 @@ class AppComponent extends Component {
   };
 
   componentDidMount() {
-    setaInterval(fetch("/api/post/find10", { method: "GET" })
+    setInterval(fetch("/api/post/find10", { method: "GET" })
       .then(this.handleResponse)
       .then(data => {
         this.setState(
