@@ -46,12 +46,38 @@ class AppComponent extends Component {
     super(props);
     let user = JSON.parse(localStorage.getItem('helprrUser'));
     this.state = {
-      user: { ...user }
+      user: { ...user },
+      posts: []
     }
   };
 
+  handleResponse(response) {
+    return response.text().then(text => {
+      const data = text && JSON.parse(text);
+      if (!response.ok) {
+        const error = (data && data.message) || response.statusText;
+        return Promise.reject(error);
+      }
+
+      return data;
+    });
+  };
+
+  componentDidMount() {
+    if (!this.state.posts.length) {
+      fetch("/api/post/find10", { method: "GET" })
+        .then(this.handleResponse)
+        .then(data => {
+          this.setState(
+            {
+              posts: [...data]
+            }
+          );
+        })
+    }
+  }
+
   render() {
-    console.log(this.props);
     return (
       <div className="helprr-app">
         <Link to={"/"} className="logo-nav">
@@ -139,7 +165,7 @@ class AppComponent extends Component {
             exact
             render={({ match }) => {
               return React.cloneElement(
-                <Pages.ImageDetails postId={match.params.id} posts={this.posts} />
+                <Pages.ImageDetails postId={match.params.id} posts={this.state.posts} />
               );
             }}
           />

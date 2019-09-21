@@ -39,36 +39,10 @@ class ImageGridComponent extends React.Component {
     and finally currentPosts (what is actually being displayed) */
     this.state = {
       searchString: "",
-      posts: [],
+      posts: this.props.posts,
       classes: this.props.classes,
-      currentPosts: []
+      currentPosts: this.props.posts
     };
-  }
-
-  handleResponse(response) {
-    return response.text().then(text => {
-      const data = text && JSON.parse(text);
-      if (!response.ok) {
-        const error = (data && data.message) || response.statusText;
-        return Promise.reject(error);
-      }
-
-      return data;
-    });
-  }
-
-  componentWillMount() {
-    fetch("/api/post/find10", { method: "GET" })
-      .then(this.handleResponse)
-      .then(data => {
-        this.setState(
-          {
-            posts: [...data],
-            currentPosts: [...data]
-          }
-        );
-        console.log(this.state.posts);
-      })
   }
 
   /* 
@@ -91,7 +65,35 @@ class ImageGridComponent extends React.Component {
     });
   };
 
+  handleResponse(response) {
+    return response.text().then(text => {
+      const data = text && JSON.parse(text);
+      if (!response.ok) {
+        const error = (data && data.message) || response.statusText;
+        return Promise.reject(error);
+      }
+
+      return data;
+    });
+  };
+
+  componentWillMount() {
+    if (!this.state.posts.length) {
+      fetch("/api/post/find10", { method: "GET" })
+        .then(this.handleResponse)
+        .then(data => {
+          this.setState(
+            {
+              posts: [...data],
+              currentPosts: [...data]
+            }
+          );
+        })
+    }
+  };
+
   render() {
+    console.log(this.state.currentPosts)
     // changing this from being set using props to setting it using state
     let posts = this.state.currentPosts;
     let classes = this.state.classes;
@@ -117,7 +119,6 @@ class ImageGridComponent extends React.Component {
             <Grid item xs={12} sm={6} lg={4} key={post.id}>
               <Photo
                 post={{ ...post }}
-                onLikeClicked={this.props.onLikeClicked}
               />
             </Grid>
           ))}
