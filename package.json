@@ -14,6 +14,10 @@
     "heroku-postbuild": "npm run build",
     "fix": "npm audit fix && cd client && npm audit fix"
   },
+  "engines": {
+    "npm": "6.10.2",
+    "node": "12.6.0"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
