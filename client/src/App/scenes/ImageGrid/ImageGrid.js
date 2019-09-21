@@ -2,7 +2,7 @@
 if its imported from multiple places  */
 import React from "react";
 
-//import prop types to make sure component give its pops right
+// import prop types to make sure component give its pops right
 import PropTypes from "prop-types";
 
 //import material-ui things
@@ -75,8 +75,8 @@ handleChange = event => {
     return (
 // adding input text box with value attribute and attached an onChange event listener
       <div className={classes.root}>
-      
-      <div className="search-container">
+     
+     <div className="search-container">
           <input
             type="text"
             id="search-bar"
@@ -87,7 +87,6 @@ handleChange = event => {
           />
           <FontAwesomeIcon icon={faSearch} size="lg" className="search-icon" />
         </div>
-
 
         <Grid container spacing={40}>
           {posts.map((post, index) => (
