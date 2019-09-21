@@ -1,6 +1,6 @@
 import "./Post.css";
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import { createPost } from "../../actions/actionCreators";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -40,7 +40,8 @@ class PostForm extends React.Component {
         user: { ...user },
         post: {
           ...post,
-          author: user.user_name
+          author: user.user_name,
+          video: false
         }
       }
     );
@@ -53,6 +54,16 @@ class PostForm extends React.Component {
       post: {
         ...post,
         [name]: value
+      }
+    });
+  };
+
+  videoChange() {
+    const { post } = this.state;
+    this.setState({
+      post: {
+        ...post,
+        video: true
       }
     });
   };
@@ -131,6 +142,13 @@ class PostForm extends React.Component {
                         onChange={this.handleChange}
                       />
                     </fieldset>
+                    <fieldset>
+                        <button
+                          type="button"
+                          name="video"
+                          onClick={this.videoChange}
+                        >&nbsp;Check here if this is a video.&nbsp;</button>
+                    </fieldset>
 
                     <fieldset>
                       <textarea
@@ -191,6 +209,13 @@ class PostForm extends React.Component {
                         tabIndex={3}
                         onChange={this.handleChange}
                       />
+                    </fieldset>
+                    <fieldset>
+                        <button
+                          type="button"
+                          name="video"
+                          onClick={this.videoChange}
+                        >&nbsp;Check here if this is a video.&nbsp;</button>
                     </fieldset>
 
                     <fieldset>

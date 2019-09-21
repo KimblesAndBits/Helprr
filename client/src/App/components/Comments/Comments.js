@@ -27,7 +27,7 @@ class Comments extends React.Component {
         <Avatar>
           <WorkIcon />
         </Avatar>
-        <ListItemText inset primary={comment.text} secondary={comment.user} />
+        <ListItemText inset primary={comment.message} secondary={comment.author} />
         <ListItemSecondaryAction>
           <IconButton
             onClick={event =>

@@ -19,6 +19,10 @@ module.exports = function (sequelize, DataTypes) {
 				type: DataTypes.STRING(1024),
 				allowNull: true
 			},
+			video: {
+				type: DataTypes.BOOLEAN,
+				allowNull: false
+			},
 			author: {
 				type: DataTypes.STRING,
 				allowNull: false,

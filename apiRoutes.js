@@ -38,7 +38,10 @@ module.exports = function (app) {
         // let startFilter = parseInt(req.params.startPoint);
         db.Post.findAll({
             limit: 10,
-            order: ["updatedAt"]
+            order: ["updatedAt"],
+            include: [{
+                model: db.Comment
+            }]
         }).then((posts, err) => {
             if (err) throw err;
             let postList = [];
@@ -47,5 +50,13 @@ module.exports = function (app) {
             });
             res.send(postList);
         });
+    });
+
+    app.post("/api/comment/create", (req, res) => {
+        let commentInfo = req.body;
+        db.Comment.create({ ...commentInfo }).then((comment, err) => {
+            if (err) throw err;
+            res.send(comment);
+        })
     });
 };

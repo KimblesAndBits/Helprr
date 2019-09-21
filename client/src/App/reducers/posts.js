@@ -10,10 +10,24 @@ function posts(state = {}, action) {
           content: action.post.content,
           title: action.post.title,
           url: action.post.url,
+          video: action.post.video,
           likes: action.post.likes
         }
       ];
     case "CREATE_POST_FAILURE":
+      return {};
+    case "CREATE_COMMENT_REQUEST":
+      return {};
+    case "CREATE_COMMENT_SUCCESS":
+      return [
+        ...state,
+        {
+          author: action.comment.author,
+          message: action.comment.message,
+          post_id: action.comment.post_id
+        }
+      ];
+    case "CREATE_COMMENT_FAILURE":
       return {};
     case "INCREMENT_LIKES":
       console.log("Incrementing Likes!!");

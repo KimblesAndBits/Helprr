@@ -2,9 +2,6 @@
 if its imported from multiple places  */
 import React from "react";
 
-// import prop types to make sure component give its pops right
-import PropTypes from "prop-types";
-
 //import material-ui things
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
@@ -119,6 +116,7 @@ class ImageGridComponent extends React.Component {
             <Grid item xs={12} sm={6} lg={4} key={post.id}>
               <Photo
                 post={{ ...post }}
+                key={post.id}
               />
             </Grid>
           ))}
@@ -133,9 +131,6 @@ class ImageGridComponent extends React.Component {
   }
 }
 
-ImageGridComponent.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 const ImageGrid = withStyles(styles)(ImageGridComponent);
 
