@@ -1,10 +1,14 @@
 {
-  "name": "helprr-app-testing-version2",
+  "name": "helprr-app",
   "version": "1.0.0",
   "private": true,
   "proxy": "http://localhost:3001/",
   "description": "Like instagram web app to learn react with redux from wesbos course for learning react",
   "keywords": [],
+  "engines": {
+    "npm": "6.10.2",
+    "node": "12.6.0"
+  },
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
