@@ -29,6 +29,16 @@ function posts(state = {}, action) {
       ];
     case "CREATE_COMMENT_FAILURE":
       return {};
+    case "DELETE_COMMENT_REQUEST":
+      return {};
+    case "DELETE_COMMENT_SUCCESS":
+      const commentId = action.index;
+      return [
+        ...state.slice(0, commentId),
+        ...state.slice(commentId + 1)
+      ];
+    case "DELETE_COMMENT_FAILURE":
+      return {};
     case "INCREMENT_LIKES":
       console.log("Incrementing Likes!!");
       const i = action.index;

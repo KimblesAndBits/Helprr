@@ -1,5 +1,5 @@
 import React from "react";
-import { addComment } from "../../../../actions/actionCreators"
+import { addComment } from "../../../../actions/actionCreators";
 import Input, { InputLabel } from "material-ui/Input";
 import { FormControl } from "material-ui/Form";
 import { withStyles } from "material-ui/styles";

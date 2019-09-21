@@ -21,6 +21,7 @@ class ImageDetails extends React.Component {
           postCode={post.id}
           postId={post.id}
           comments={post.Comments}
+          removeComment={this.props.removeComment}
         />
       </Paper>
     );

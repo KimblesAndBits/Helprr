@@ -54,8 +54,7 @@ class PhotoComponent extends React.Component {
 
 PhotoComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired,
-  onLikeClicked: PropTypes.func.isRequired
+  post: PropTypes.object.isRequired
 };
 
 const Photo = withStyles(styles)(PhotoComponent);

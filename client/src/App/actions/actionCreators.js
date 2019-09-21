@@ -57,10 +57,18 @@ export function createPost(post) {
 
 // remove comment
 
-export function removeComment(postId, i) {
-  return {
-    type: "REMOVE_COMMENT",
-    i,
-    postId
+export function removeComment(id) {
+  return dispatch => {
+    dispatch(request(id));
+
+    commentService.remove(id)
+      .then(
+        id => dispatch(success(id)),
+        error => dispatch(failure(id, error.toString()))
+      );
   };
+
+  function request(id) { return { type: "DELETE_COMMENT_REQUEST", id } }
+  function success(id) { return { type: "DELETE_COMMENT_SUCCESS", id } }
+  function failure(id, error) { return { type: "DELETE_COMMENT_FAILURE", id, error } }
 };

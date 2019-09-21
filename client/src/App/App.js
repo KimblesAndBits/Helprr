@@ -64,17 +64,15 @@ class AppComponent extends Component {
   };
 
   componentDidMount() {
-    if (!this.state.posts.length) {
-      fetch("/api/post/find10", { method: "GET" })
-        .then(this.handleResponse)
-        .then(data => {
-          this.setState(
-            {
-              posts: [...data]
-            }
-          );
-        })
-    }
+    fetch("/api/post/find10", { method: "GET" })
+      .then(this.handleResponse)
+      .then(data => {
+        this.setState(
+          {
+            posts: [...data]
+          }
+        );
+      })
   }
 
   render() {
@@ -165,7 +163,7 @@ class AppComponent extends Component {
             exact
             render={({ match }) => {
               return React.cloneElement(
-                <Pages.ImageDetails postId={match.params.id} posts={this.state.posts} />
+                <Pages.ImageDetails removeComment={this.props.removeComment} postId={match.params.id} posts={this.state.posts} />
               );
             }}
           />

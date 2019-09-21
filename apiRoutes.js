@@ -59,4 +59,13 @@ module.exports = function (app) {
             res.send(comment);
         })
     });
+
+    app.delete("/api/comment/delete/:id", (req, res) => {
+        let deleteId = parseInt(req.params.id , 10)
+        db.Comment.destroy({ where: { id: deleteId } })
+            .then((comment, err) => {
+                if (err) throw err;
+                res.send(comment);
+            })
+    });
 };

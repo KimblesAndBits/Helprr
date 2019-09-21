@@ -1,13 +1,4 @@
 import React from "react";
-
-/**
- * import prop types to make sure component give its pops right
- */
-import PropTypes from "prop-types";
-
-/**
- * Import material-ui things
- */
 import List, {
   ListItem,
   ListItemText,
@@ -21,22 +12,36 @@ import ClearIcon from "material-ui-icons/Clear";
 import AddCommentsForm from "./components/AddCommentsForm/AddCommentsForm";
 
 class Comments extends React.Component {
-  renderComments(comment, i) {
+  constructor(props) {
+    super(props);
+    let user = JSON.parse(localStorage.getItem('helprrUser'));
+    this.state = {
+      user: { ...user }
+    }
+  }
+
+  renderComments(comment) {
     return (
-      <ListItem key={i}>
+      <ListItem key={comment.id}>
         <Avatar>
           <WorkIcon />
         </Avatar>
         <ListItemText inset primary={comment.message} secondary={comment.author} />
-        <ListItemSecondaryAction>
-          <IconButton
-            onClick={event =>
-              this.props.onRemoveComments(this.props.postCode, i)
-            }
-          >
-            <ClearIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
+        {
+          (this.state.user.user_name === comment.author)
+            ?
+            (<ListItemSecondaryAction>
+              <IconButton
+                onClick={() =>
+                  this.props.removeComment(this.props.postCode)
+                }
+              >
+                <ClearIcon />
+              </IconButton>
+            </ListItemSecondaryAction>)
+            :
+            (<span></span>)
+        }
       </ListItem>
     );
   }
@@ -66,7 +71,6 @@ class Comments extends React.Component {
 
     renderedComponents.push(
       <AddCommentsForm
-        onFormSubmit={this.props.onAddComments}
         postCode={this.props.postCode}
       />
     );
@@ -74,13 +78,5 @@ class Comments extends React.Component {
     return renderedComponents;
   }
 }
-
-Comments.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onRemoveComments: PropTypes.func.isRequired,
-  onAddComments: PropTypes.func.isRequired,
-  postCode: PropTypes.string.isRequired,
-  postId: PropTypes.string.isRequired
-};
 
 export default Comments;

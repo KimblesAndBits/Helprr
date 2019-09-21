@@ -1,5 +1,6 @@
 export const commentService = {
-    create
+    create,
+    remove
 };
 
 function create(author, message, post_id) {
@@ -15,6 +16,13 @@ function create(author, message, post_id) {
     };
 
     return fetch(`/api/comment/create`, requestOptions)
+        .then(comment => {
+            return comment;
+        });
+};
+
+function remove(id) {
+    return fetch(`/api/comment/delete/${id}`, {method: 'DELETE'})
         .then(comment => {
             return comment;
         });
