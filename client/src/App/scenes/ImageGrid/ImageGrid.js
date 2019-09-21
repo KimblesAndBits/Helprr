@@ -75,18 +75,17 @@ class ImageGridComponent extends React.Component {
   };
 
   componentWillMount() {
-    if (!this.state.posts.length) {
-      fetch("/api/post/find10", { method: "GET" })
-        .then(this.handleResponse)
-        .then(data => {
-          this.setState(
-            {
-              posts: [...data],
-              currentPosts: [...data]
-            }
-          );
-        })
-    }
+    setInterval(fetch("/api/post/find10", { method: "GET" })
+      .then(this.handleResponse)
+      .then(data => {
+        this.setState(
+          {
+            posts: [...data],
+            currentPosts: [...data]
+          }
+        );
+      })
+      , 3000);
   };
 
   render() {
