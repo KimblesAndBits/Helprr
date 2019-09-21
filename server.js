@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "test") {
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/src/index.js"));
 });
 
 db.sequelize.sync(syncOptions).then(function () {
