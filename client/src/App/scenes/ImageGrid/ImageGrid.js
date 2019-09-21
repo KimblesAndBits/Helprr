@@ -2,7 +2,7 @@
 if its imported from multiple places  */
 import React from "react";
 
-//import prop types to make sure component give its pops right
+// import prop types to make sure component give its pops right
 import PropTypes from "prop-types";
 
 //import material-ui things
@@ -111,7 +111,6 @@ class ImageGridComponent extends React.Component {
           />
           <FontAwesomeIcon icon={faSearch} size="lg" className="search-icon" />
         </div>
-
 
         <Grid container spacing={40}>
           {posts.map((post) => (
