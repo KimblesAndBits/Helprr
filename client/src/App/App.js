@@ -48,17 +48,10 @@ class AppComponent extends Component {
     this.state = {
       user: { ...user }
     }
-  }
-
-  componentDidMount() {
-    let user = JSON.parse(localStorage.getItem('helprrUser'));
-    console.log(user);
-    this.setState(
-      { user: { ...user } }
-    );
-  }
+  };
 
   render() {
+    console.log(this.props);
     return (
       <div className="helprr-app">
         <Link to={"/"} className="logo-nav">
@@ -138,9 +131,7 @@ class AppComponent extends Component {
             path="/"
             exact
             render={({ match }) => {
-              return React.cloneElement(<Pages.ImageGrid />, {
-                ...this.props
-              });
+              return React.cloneElement(<Pages.ImageGrid posts={this.state.posts} />);
             }}
           />
           <Route
@@ -148,10 +139,7 @@ class AppComponent extends Component {
             exact
             render={({ match }) => {
               return React.cloneElement(
-                <Pages.ImageDetails postId={match.params.id} />,
-                {
-                  ...this.props
-                }
+                <Pages.ImageDetails postId={match.params.id} posts={this.posts} />
               );
             }}
           />
@@ -167,8 +155,7 @@ class AppComponent extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts,
-    comments: state.comments
+    posts: state.posts
   };
 }
 

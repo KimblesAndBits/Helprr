@@ -15,8 +15,8 @@ module.exports = function (sequelize, DataTypes) {
 					len: [1]
 				}
 			},
-			video: {
-				type: DataTypes.STRING,
+			image_video: {
+				type: DataTypes.STRING(1024),
 				allowNull: true
 			},
 			author: {

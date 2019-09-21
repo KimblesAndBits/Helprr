@@ -1,5 +1,20 @@
-function posts(state = [], action) {
+function posts(state = {}, action) {
   switch (action.type) {
+    case "CREATE_POST_REQUEST":
+      return {};
+    case "CREATE_POST_SUCCESS":
+      return [
+        ...state,
+        {
+          author: action.post.author,
+          content: action.post.content,
+          title: action.post.title,
+          url: action.post.url,
+          likes: action.post.likes
+        }
+      ];
+    case "CREATE_POST_FAILURE":
+      return {};
     case "INCREMENT_LIKES":
       console.log("Incrementing Likes!!");
       const i = action.index;
