@@ -65,7 +65,6 @@ class ImageGridComponent extends React.Component {
   };
 
   render() {
-    // changing this from being set using props to setting it using state
     let posts = this.state.currentPosts;
     let classes = this.state.classes;
 

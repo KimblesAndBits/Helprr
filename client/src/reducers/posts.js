@@ -1,7 +1,7 @@
 function posts(state = {}, action) {
   switch (action.type) {
     case "CREATE_POST_REQUEST":
-      return { creating: true };
+      return state;
     case "CREATE_POST_SUCCESS":
       return [
         ...state,
