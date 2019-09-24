@@ -38,11 +38,11 @@ class PhotoComponent extends React.Component {
             component={post.type === "video" ? "iframe" : "img"}
             className={classes.media}
             image={post.image_video}
-            title={post.caption}
           />
         </Link>
-        <CardContent>
-          <p>{post.caption}</p>
+        <CardContent component="div">
+          <h2>{post.title}</h2>
+          <p>{post.content}</p>
           <IconButton onClick={event => this.props.onLikeClicked(post.id)}>
             <FavoriteIcon color="error" /> {post.likes}
           </IconButton>

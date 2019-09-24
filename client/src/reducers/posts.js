@@ -1,7 +1,7 @@
 function posts(state = {}, action) {
   switch (action.type) {
     case "CREATE_POST_REQUEST":
-      return {};
+      return state;
     case "CREATE_POST_SUCCESS":
       return [
         ...state,
@@ -16,28 +16,11 @@ function posts(state = {}, action) {
       ];
     case "CREATE_POST_FAILURE":
       return {};
-    case "CREATE_COMMENT_REQUEST":
-      return {};
-    case "CREATE_COMMENT_SUCCESS":
-      return [
-        ...state,
-        {
-          author: action.comment.author,
-          message: action.comment.message,
-          post_id: action.comment.post_id
-        }
-      ];
-    case "CREATE_COMMENT_FAILURE":
-      return {};
-    case "DELETE_COMMENT_REQUEST":
-      return {};
-    case "DELETE_COMMENT_SUCCESS":
-      const commentId = action.index;
-      return [
-        ...state.slice(0, commentId),
-        ...state.slice(commentId + 1)
-      ];
-    case "DELETE_COMMENT_FAILURE":
+    case "FIND_POSTS_REQUEST":
+      return { finding: true };
+    case "FIND_POSTS_SUCCESS":
+      return [...action.post];
+    case "FIND_POSTS_FAILURE":
       return {};
     case "INCREMENT_LIKES":
       console.log("Incrementing Likes!!");

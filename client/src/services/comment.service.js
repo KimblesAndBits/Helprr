@@ -1,6 +1,7 @@
 export const commentService = {
     create,
-    remove
+    remove,
+    findComments
 };
 
 function create(author, message, post_id) {
@@ -16,14 +17,36 @@ function create(author, message, post_id) {
     };
 
     return fetch(`/api/comment/create`, requestOptions)
+        .then(handleResponse)
         .then(comment => {
             return comment;
         });
 };
 
-function remove(id) {
-    return fetch(`/api/comment/delete/${id}`, {method: 'DELETE'})
+const handleResponse = (response) => {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
+};
+
+function findComments(postId) {
+    return fetch(`/api/comments/find/${postId}`, { method: "GET" })
+        .then(handleResponse)
         .then(comment => {
             return comment;
+        }
+        );
+}
+
+function remove(id, arrayPos) {
+    return fetch(`/api/comment/delete/${parseInt(id, 10)}`, {method: 'DELETE'})
+        .then( () => {
+            return arrayPos;
         });
 }

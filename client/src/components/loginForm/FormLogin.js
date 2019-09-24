@@ -73,8 +73,7 @@ function mapState(state) {
 }
 
 const actionCreators = {
-  login: userActions.login,
-  logout: userActions.logout
+  login: userActions.login
 };
 
 const connectedLoginPage = connect(mapState, actionCreators)(FormLogin);

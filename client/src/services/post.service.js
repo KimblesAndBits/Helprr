@@ -1,6 +1,6 @@
 export const postService = {
-    create
-};
+    create,
+    findPosts
 
 function create(title, author, content, url, video) {
     let post = {
@@ -11,7 +11,6 @@ function create(title, author, content, url, video) {
         image_video: url,
         likes: 0
     };
-    console.log(post);
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -22,4 +21,25 @@ function create(title, author, content, url, video) {
         .then(post => {
             return post;
         });
+};
+
+const handleResponse = (response) => {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
+};
+
+function findPosts() {
+    return fetch("/api/post/find10", { method: "GET" })
+        .then(handleResponse)
+        .then(data => {
+            return data;
+        }
+        );
 }

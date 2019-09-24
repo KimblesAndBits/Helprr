@@ -1,7 +1,9 @@
 /* import react from react don't worry its will not be duplicate
 if its imported from multiple places  */
 import React from "react";
-
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as actionCreators from "../../actions/actionCreators";
 //import material-ui things
 import { withStyles } from "material-ui/styles";
 import Grid from "material-ui/Grid";
@@ -36,7 +38,6 @@ class ImageGridComponent extends React.Component {
     and finally currentPosts (what is actually being displayed) */
     this.state = {
       searchString: "",
-      posts: this.props.posts,
       classes: this.props.classes,
       currentPosts: this.props.posts
     };
@@ -48,13 +49,14 @@ class ImageGridComponent extends React.Component {
   */
   handleChange = event => {
     let currentPosts = this.state.currentPosts;
-    let posts = this.state.posts;
     let search = this.refs.search.value;
 
     if (search.length > 0) {
-      currentPosts = posts.filter(function (post) {
-        return post.caption.toLowerCase().match(search);
+      currentPosts = this.props.posts.filter(function (post) {
+        return post.content.toLowerCase().match(search);
       });
+    } else {
+      currentPosts = this.props.posts;
     }
     this.setState({
       currentPosts,
@@ -62,35 +64,7 @@ class ImageGridComponent extends React.Component {
     });
   };
 
-  handleResponse(response) {
-    return response.text().then(text => {
-      const data = text && JSON.parse(text);
-      if (!response.ok) {
-        const error = (data && data.message) || response.statusText;
-        return Promise.reject(error);
-      }
-
-      return data;
-    });
-  };
-
-  componentWillMount() {
-    setInterval(fetch("/api/post/find10", { method: "GET" })
-      .then(this.handleResponse)
-      .then(data => {
-        this.setState(
-          {
-            posts: [...data],
-            currentPosts: [...data]
-          }
-        );
-      })
-      , 3000);
-  };
-
   render() {
-    console.log(this.state.currentPosts)
-    // changing this from being set using props to setting it using state
     let posts = this.state.currentPosts;
     let classes = this.state.classes;
 
@@ -109,18 +83,20 @@ class ImageGridComponent extends React.Component {
           />
           <FontAwesomeIcon icon={faSearch} size="lg" className="search-icon" />
         </div>
-
-        <Grid container spacing={40}>
-          {posts.map((post) => (
-            <Grid item xs={12} sm={6} lg={4} key={post.id}>
-              <Photo
-                post={{ ...post }}
-                key={post.id}
-              />
-            </Grid>
-          ))}
-        </Grid>
-        <hr
+        {
+          (posts.length > 0) ? (
+            <Grid container spacing={40}>
+              {posts.map((post) => (
+                <Grid item xs={12} sm={6} lg={4} key={post.id}>
+                  <Photo
+                    classes={{ ...classes }}
+                    post={{ ...post }}
+                  />
+                </Grid>
+              ))}
+            </Grid>)
+            : (<span></span>)
+        }  <hr
           style={{
             margin: 30
           }}
@@ -130,7 +106,18 @@ class ImageGridComponent extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  };
+}
 
-const ImageGrid = withStyles(styles)(ImageGridComponent);
+function mapDispachToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+const ConnectedImageGridComponent = connect(mapStateToProps, mapDispachToProps)(ImageGridComponent);
+
+const ImageGrid = withStyles(styles)(ConnectedImageGridComponent);
 
 export { ImageGrid };

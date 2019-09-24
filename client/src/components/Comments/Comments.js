@@ -16,7 +16,8 @@ class Comments extends React.Component {
     super(props);
     let user = JSON.parse(localStorage.getItem('helprrUser'));
     this.state = {
-      user: { ...user }
+      user: { ...user },
+      comments: this.props.comments
     }
   }
 
@@ -33,7 +34,7 @@ class Comments extends React.Component {
             (<ListItemSecondaryAction>
               <IconButton
                 onClick={() =>
-                  this.props.removeComment(this.props.postCode)
+                  this.props.removeComment(comment.id, this.props.postCode, comment.arrayPos)
                 }
               >
                 <ClearIcon />

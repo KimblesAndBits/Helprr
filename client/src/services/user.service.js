@@ -1,4 +1,4 @@
-import { authHeader } from '../../auth-header';
+import { authHeader } from '../auth-header';
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcryptjs");
 
@@ -15,18 +15,15 @@ function login(email, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
     };
-    console.log("Made it this far");
 
     return fetch(`/api/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            console.log(user);
             bcrypt.compare(password, user.password, (err, res) => {
                 if (err) throw err;
                 console.log("Password match: " + res);
                 if (res) {
                     localStorage.setItem('helprrUser', JSON.stringify(user));
-
                     return user;
                 }
                 return ("Incorrect password.");
