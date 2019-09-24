@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { render } from "react-dom";
 
 // import the main entry point for this application
-import App from "./App/App";
+import App from "./App";
 
 // get the inital state
 import store, { history } from "./store";

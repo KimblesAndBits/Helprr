@@ -3,7 +3,7 @@ import { routerMiddleware } from "react-router-redux";
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import createHistory from "history/createBrowserHistory";
-import rootReducer from "./App/reducers";
+import rootReducer from "./reducers";
 
 export const history = createHistory();
 const loggerMiddleware = createLogger();
@@ -11,6 +11,7 @@ const loggerMiddleware = createLogger();
 /**
  * Create the inital value for your store
  */
+
 const initialState = {};
 
 const enhancers = [];

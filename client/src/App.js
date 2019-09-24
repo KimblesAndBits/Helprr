@@ -42,39 +42,10 @@ import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 
 import Chat from "./components/Chat/chat";
 class AppComponent extends Component {
-  constructor(props) {
-    super(props);
-    let user = JSON.parse(localStorage.getItem('helprrUser'));
-    this.state = {
-      user: { ...user },
-      posts: []
-    }
-  };
-
-  handleResponse(response) {
-    return response.text().then(text => {
-      const data = text && JSON.parse(text);
-      if (!response.ok) {
-        const error = (data && data.message) || response.statusText;
-        return Promise.reject(error);
-      }
-
-      return data;
-    });
-  };
 
   componentDidMount() {
-    setInterval(fetch("/api/post/find10", { method: "GET" })
-      .then(this.handleResponse)
-      .then(data => {
-        this.setState(
-          {
-            posts: [...data]
-          }
-        );
-      })
-      , 3000);
-  }
+    this.props.getPosts();
+  };
 
   render() {
     return (
@@ -88,16 +59,16 @@ class AppComponent extends Component {
             Helprr
           </h1>
         </Link>
-
+            
         {
-          (this.state.user) ?
+          (this.props.user.hasOwnProperty("first_name")) ?
             (<p
               className="subheader"
               style={{
                 textAlign: "center"
               }}
             >
-              Welcome {this.state.user.first_name}!
+              Welcome {this.props.user.first_name}!
             </p>)
             :
             (<span></span>)
@@ -155,8 +126,8 @@ class AppComponent extends Component {
           <Route
             path="/"
             exact
-            render={({ match }) => {
-              return React.cloneElement(<Pages.ImageGrid posts={this.state.posts} />);
+            render={() => {
+              return React.cloneElement(<Pages.ImageGrid posts={this.props.posts} />);
             }}
           />
           <Route
@@ -164,11 +135,16 @@ class AppComponent extends Component {
             exact
             render={({ match }) => {
               return React.cloneElement(
-                <Pages.ImageDetails removeComment={this.props.removeComment} postId={match.params.id} posts={this.state.posts} />
+                <Pages.ImageDetails removeComment={this.props.removeComment} postId={match.params.id} />
               );
             }}
           />
-          <Route path="/register" exact component={FormLogin} />
+          <Route path="/register"
+            exact
+            render={() => {
+              return (<FormLogin />);
+            }
+            } />
           <Redirect from="*" to="/" />
         </Switch>
         <Chat />
@@ -180,7 +156,8 @@ class AppComponent extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    posts: state.posts,
+    user: state.authentication.user
   };
 }
 

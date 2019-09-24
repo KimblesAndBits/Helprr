@@ -22,7 +22,7 @@ class PostForm extends React.Component {
       user: { ...user },
       post: {
         title: "",
-        author: user.user_name,
+        author: "",
         content: "",
         url: ""
       }
@@ -40,7 +40,6 @@ class PostForm extends React.Component {
         user: { ...user },
         post: {
           ...post,
-          author: user.user_name,
           video: false
         }
       }
@@ -70,8 +69,9 @@ class PostForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    let user = JSON.parse(localStorage.getItem('helprrUser'));
     const { post } = this.state;
+    post.author = user.user_name;
     if (post.title
       && post.content) {
       this.props.create(post);
@@ -143,11 +143,11 @@ class PostForm extends React.Component {
                       />
                     </fieldset>
                     <fieldset>
-                        <button
-                          type="button"
-                          name="video"
-                          onClick={this.videoChange}
-                        >&nbsp;Check here if this is a video.&nbsp;</button>
+                      <button
+                        type="button"
+                        name="video"
+                        onClick={this.videoChange}
+                      >&nbsp;Check here if this is a video.&nbsp;</button>
                     </fieldset>
 
                     <fieldset>
@@ -211,11 +211,11 @@ class PostForm extends React.Component {
                       />
                     </fieldset>
                     <fieldset>
-                        <button
-                          type="button"
-                          name="video"
-                          onClick={this.videoChange}
-                        >&nbsp;Check here if this is a video.&nbsp;</button>
+                      <button
+                        type="button"
+                        name="video"
+                        onClick={this.videoChange}
+                      >&nbsp;Check here if this is a video.&nbsp;</button>
                     </fieldset>
 
                     <fieldset>

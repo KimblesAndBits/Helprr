@@ -52,6 +52,24 @@ module.exports = function (app) {
         });
     });
 
+    app.get("/api/comments/find/:postId", (req, res) => {
+        let post = parseInt(req.params.postId, 10);
+        console.log(post);
+        db.Post.findOne({
+            where: { id: post },
+            include: [{
+                model: db.Comment
+            }]
+        }).then((post, err) => {
+            if (err) throw err;
+            let commentList = [];
+            post.dataValues.Comments.forEach(element => {
+                commentList.push(element.dataValues)
+            });
+            res.send(post.dataValues.Comments);
+        });
+    });
+
     app.post("/api/comment/create", (req, res) => {
         let commentInfo = req.body;
         db.Comment.create({ ...commentInfo }).then((comment, err) => {
@@ -61,11 +79,8 @@ module.exports = function (app) {
     });
 
     app.delete("/api/comment/delete/:id", (req, res) => {
-        let deleteId = parseInt(req.params.id , 10)
+        let deleteId = parseInt(req.params.id, 10)
         db.Comment.destroy({ where: { id: deleteId } })
-            .then((comment, err) => {
-                if (err) throw err;
-                res.send(comment);
-            })
+        res.send(deleteId);
     });
 };
