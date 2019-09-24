@@ -21,7 +21,6 @@ function login(email, password) {
         .then(user => {
             bcrypt.compare(password, user.password, (err, res) => {
                 if (err) throw err;
-                console.log("Password match: " + res);
                 if (res) {
                     localStorage.setItem('helprrUser', JSON.stringify(user));
                     return user;

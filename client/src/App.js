@@ -59,7 +59,7 @@ class AppComponent extends Component {
             Helprr
           </h1>
         </Link>
-            
+
         {
           (this.props.user.hasOwnProperty("first_name")) ?
             (<p

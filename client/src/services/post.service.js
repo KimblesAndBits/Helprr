@@ -1,6 +1,7 @@
 export const postService = {
     create,
     findPosts
+};
 
 function create(title, author, content, url, video) {
     let post = {
