@@ -19,7 +19,9 @@ function create(title, author, content, url, video) {
     };
 
     return fetch(`/api/post/create`, requestOptions)
+        .then(handleResponse)
         .then(post => {
+            console.log(post)
             return post;
         });
 };
