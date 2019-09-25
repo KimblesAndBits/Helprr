@@ -37,10 +37,11 @@ export function addComment(comment) {
 export function createPost(post) {
   return dispatch => {
     dispatch(request({ post }));
-
+    console.log(post)
     postService.create(post.title, post.author, post.content, post.url, post.video)
       .then(
         post => {
+          console.log(post)
           dispatch(success(post));
           history.push('/post/create');
         },

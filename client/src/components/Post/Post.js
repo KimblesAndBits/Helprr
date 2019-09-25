@@ -72,6 +72,7 @@ class PostForm extends React.Component {
     let user = JSON.parse(localStorage.getItem('helprrUser'));
     const { post } = this.state;
     post.author = user.user_name;
+    console.log(post);
     if (post.title
       && post.content) {
       this.props.create(post);

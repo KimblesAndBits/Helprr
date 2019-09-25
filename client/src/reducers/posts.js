@@ -6,10 +6,11 @@ function posts(state = {}, action) {
       return [
         ...state,
         {
+          id: action.post.id,
           author: action.post.author,
           content: action.post.content,
           title: action.post.title,
-          url: action.post.url,
+          image_video: action.post.image_video,
           video: action.post.video,
           likes: action.post.likes
         }
